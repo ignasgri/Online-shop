@@ -1,0 +1,1 @@
+C:\Users\ignas\virtualenvs\onlineshop_env\Scripts\activate
