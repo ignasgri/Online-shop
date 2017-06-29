@@ -43,6 +43,8 @@ INSTALLED_APPS = [
     'django_gravatar',
     'products',
     'rest_framework',
+    'cart',
+    'payments',
 ]
 
 MIDDLEWARE = [
@@ -126,6 +128,9 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.11/howto/static-files/
+
+STRIPE_PUBLISHABLE = os.getenv('STRIPE_PUBLISHABLE_KEY')
+STRIPE_SECRET = os.getenv('STRIPE_SECRET_KEY')
 
 STATIC_URL = '/static/'
 
