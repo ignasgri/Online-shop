@@ -1,5 +1,25 @@
-{% extends "base.html" %}
+{% extends 'base.html' %}
+
+{% block sidebar %}
+    {% for category in categories %}
+        <li class="category-name"><a href="{% url 'category' category.id %}">{{ category.name }}</a></li>
+    {% endfor %}
+{% endblock sidebar %}
+
+
 {% block content %}
+
+    <ol class="breadcrumb">
+        {% for crumb in crumbs %}
+            {% if forloop.last %}
+                <li class="active">{{ crumb.name }}</li>
+            {% else %}
+                <li><a href="{% url 'category' crumb.id %}">{{ crumb.name }}</a></li>
+            {% endif %}
+        {% endfor %}
+    </ol>
+
+
     <table class="table table-striped">
         <thead>
         <tr>
@@ -25,12 +45,11 @@
                         {% csrf_token %}
                         Quantity
                         <input name='quantity' type="number" min="1" max="999">
-                        <!--<button type="submit">Add</button>-->
-                        <button i class="fa fa-shopping-basket" aria-hidden="true" type="submit"></i></button>
+                        <button type="submit">Add</button>
                     </form>
                 </td>
             </tr>
         {% endfor %}
         </tbody>
     </table>
-{% endblock %}
+{% endblock content %}
