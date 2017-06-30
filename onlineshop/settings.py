@@ -141,3 +141,9 @@ STATICFILES_DIRS = (
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
+
+# Email Settings
+DEFAULT_FROM_EMAIL = 'admin@example.com'
+
+# To use Django's Console email backend
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
