@@ -15,8 +15,8 @@
     {% block head_js %}{% endblock %}
 </head>
 <body>
-    <h1>Open NOW!</h1>
 <div class="container">
+    <h1>Open NOW!</h1>
    <div class="masthead">
        <ul class="nav nav-pills pull-right">
             <li><a href="/"><i class="fa fa-home"></i> Home</a></li>
@@ -30,6 +30,11 @@
                 <li><a href="{% url 'login' %}"><i class="fa fa-sign-in"></i> Log In</a></li>
             {% endif %}
             <li><a href="{% url 'cart' %}"><i class="fa fa-shopping-cart"></i> Cart</a></li>
+            
+            {% if num_cart_items > 0 %}
+                 <li>{{ num_cart_items }}</li>
+            {% endif%}
+
         </ul>
        <span class="fui-settings-16 muted"></div>
        {% if messages %}

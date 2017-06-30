@@ -5,13 +5,15 @@ from products.models import Product
 # Create your views here.
 def root_categories(request):
     categories = Category.objects.filter(parent=None)
+    products = Product.objects.all()
 
-    args = { 'categories': categories, 'subcategories': {}, 'products': {}}
+    args = { 'products': products}
     return render(request, 'categories.html', args)
 
 
 def get_category(request, id):
     this_category = get_object_or_404(Category, pk=id)
+    root_categories = Category.objects.filter(parent=None)
 
     crumbs = []
 
@@ -24,7 +26,7 @@ def get_category(request, id):
 
     products = this_category.products.all()
 
-    args = { 'categories': subcategories, 'products': products, 'crumbs': crumbs}
+    args = { 'subcategories': subcategories, 'products': products, 'crumbs': crumbs}
     return render(request, 'categories.html', args)
 
 

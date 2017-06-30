@@ -93,6 +93,12 @@ def adjust_cart(request, id):
         cartItem.delete()
     return redirect(reverse('cart'))
 
+def root_categories_context(request):
+    if request.user.is_anonymous():
+        return {'num_cart_items': 0}    
+    else:
+        cartItems = CartItem.objects.filter(user=request.user)    
+        return {'num_cart_items': cartItems.count()}
 
 class UserViewSet(viewsets.ModelViewSet):
     """
@@ -108,3 +114,5 @@ class CartItemViewSet(viewsets.ModelViewSet):
     """
     queryset = CartItem.objects.all()
     serializer_class = CartItemSerializer
+
+    
