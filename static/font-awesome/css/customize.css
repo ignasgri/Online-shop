@@ -1,4 +1,116 @@
+.righticons{
+    font-weight: normal;
+    font-size: 11px;
+    vertical-align: center;
+}
+span.fa-stack.fa-lg{
+    position: relative;
+    display: inline-block;
+    width: 2em;
+    height: 2em;
+    line-height: 2em;
+    vertical-align: middle;
+    margin-left: -10px;
+    font-size: small;
+    color: #820f0f;
+    font-weight: bold;
+    margin-top: 12px;
+}
+i.fa-stack-1x{
+    left: -2px;
+}
+/*li.cartnumber{
+    margin-left: 65px;
+    margin-top: 7px;
+    color: red;
+    position: absolute;
+}*/
+.additionalinformation{
+    font-family: 'dosis';
+    padding-bottom: 10px;
+}
+
+.paymenttype{
+    width:100%;
+}
+
+.footerimages{
+    display: inline-block;
+}
+.footerimages:hover{
+    cursor: pointer;
+}
+.footerbar{
+    text-align: center;
+    padding: 100px 200px 0px 100px;
+}
+.footerbarcontent h1{
+    font-size: 80px;
+    font-family: 'dosis';
+    color: pink;
+    text-shadow: 1px 1px 2px white;
+}
+.footerbarcontent h3{
+    font-family: 'dosis';
+    color:white;
+}
+.indexfooter{
+    margin-top:150px;
+}
+.phone{
+    /*width: 100%;*/
+    display: block;
+    margin-top: -80px;
+}
+footer{
+    /*margin-top: 150px;*/
+    /*height: 400px;*/
+    /*width: 100%;*/
+    background-color: rgba(0,0,0,0.8);
+    
+}
+.delivery{
+    text-align: center;
+    padding-top:470px;
+    }
+.inline{
+    margin-top: 20px;
+    width: 100%;
+    position: relative;
+    text-align: center;
+}
+.inline h2{
+    font-family: 'Permanent Marker', monospace;
+    font-size: 60px;
+    padding-bottom: 20px;
+    color: white;
+}
+.form-control{
+    vertical-align: middle;
+    text-align: center !important;
+   margin-right:5px;
+    width: 500px;
+    height: 50px;
+    font-size: 30px;
+    display: inline !important;
+}
+.searchbar{
+    
+    height: 200px;
+    width:100%;
+    background-color: rgba(0,0,0,0.5);
+    position: absolute;
+    margin-top: 170px;
+}
+#search_button{
+    background-color: #e8a93c;
+    color: white;
+    font-size: 20px;
+
+}
 button{
+    height: 50px;
+    
     border: none;
     background: none;
 }
@@ -25,4 +137,55 @@ table.table.table-striped > tbody > tr{
 .prof{
     margin-left: 50px;
     margin-top: 50px;
+}
+.row{
+    width: 100%;
+    margin: 0px 10px;
+}
+.bglayer{
+    background-image: rgba(0,0,0,0.2);
+    z-index: 1;
+    position: relative;
+}
+.bg{
+background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-attachment: fixed;
+    z-index: -1;
+  
+}
+
+.navbar {
+    background-color: rgba(0,0,0,0.2);
+    background-image: none;
+    border: none;
+}
+
+.btn{
+    background: none;
+    background-image: none;
+    border: none;
+}
+li{
+    font-family: 'Roboto Mono', monospace;
+    font-weight: bolder;
+}
+a{
+    color: white;
+}
+a.blog{
+    color:#820f0f;
+}
+.cart{
+    padding-right:20px;
+}
+.navbar-brand{
+    /*padding-left: 420px;*/
+}
+.navbar-brand:hover{
+    padding-left: 60px;
+    padding-top: 20px;
+    transform: scale(3);
+    transition: all 1s;
 }

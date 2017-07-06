@@ -1,5 +1,5 @@
 {% load static from staticfiles %}
-<!DOCTYPE html>
+<!DOCTYPE html >
 <html lang="en">
 <head>
     
@@ -8,7 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="">
-    <link href="https://fonts.googleapis.com/css?family=Cousine|Permanent+Marker|Roboto+Mono|Dosis" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Cousine|Permanent+Marker|Roboto+Mono" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/3.3.6/cerulean/bootstrap.min.css">
     <link rel="stylesheet" href="{% static 'font-awesome/css/font-awesome.min.css' %}">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0-alpha1/jquery.min.js"></script>
@@ -16,7 +16,7 @@
     <link rel="stylesheet" href="{% static 'font-awesome/css/customize.css' %}">
     {% block head_js %}{% endblock %}
 </head>
-<body>
+<body class="bg bglayer" style="background-image: url('{% static "images/back.jpeg" %}')";>
     <nav class="navbar">
   <div class="container-fluid">
     <!-- Brand and toggle get grouped for better mobile display -->
@@ -27,19 +27,18 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <!--<a class="navbar-brand" href="#"><span><img src="{% static "images/logo4.png" %}" alt="delivery1" width="100px"></span></a>-->
+      <a class="navbar-brand" href="#">Brand</a>
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-      <ul class="nav navbar-nav navbar-left">
-        <li class="active"><a href="/">HOME <span class="sr-only">(current)</span></a></li>
-        <li><a href="{% url 'products' %}">PRODUCTS</a></li>
+      <ul class="nav navbar-nav navbar-right">
+        <li class="active"><a href="#">HOME <span class="sr-only">(current)</span></a></li>
+        <li><a href="#">PRODUCTS</a></li>
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">CATEGORIES <i class="fa fa-chevron-down" aria-hidden="true"></i></a>
-          <li><a class="blog"href="#">BLOG</a></li>
           <ul class="dropdown-menu">
-            <li><a href="{% url 'categories' %}">All categories</a></li>
+            <li><a href="#">Action</a></li>
             <li><a href="#">Another action</a></li>
             <li><a href="#">Something else here</a></li>
             <li role="separator" class="divider"></li>
@@ -47,27 +46,24 @@
             <li role="separator" class="divider"></li>
             <li><a href="#">One more separated link</a></li>
           </ul>
-          </ul>
         </li>
-        <ul class="nav navbar-nav navbar-right">
-             {% if user.is_authenticated %}
-                <li class="righticons"><a href="{% url 'profile' %}"><i class="fa fa-user"></i> Profile</a></li>
-                <li class="righticons"><a href="{% url 'logout' %}"><i class="fa fa-sign-out"></i> Log Out</a></li>
-            {%  else %}
-        <li class="righticons"><a href="{% url 'login' %}"><i class="fa fa-lock" aria-hidden="true"></i> Login</a></li>
-        {% endif %}
-        <li class="righticons"><a href="{% url 'register' %}"><i class="fa fa-plus" aria-hidden="true"></i> SignUp</a></li>
-      <ul class="nav navbar-nav navbar-right cart">
+        <li><a class="blog"href="#">BLOG</a></li>
+      <ul class="nav navbar-nav navbar-right">
         <li><a a href="{% url 'cart' %}"><i class="fa fa-shopping-cart"></i> CART</a></li>
-        {% if num_cart_items > 0 %}
-                 <!--<li class="cartnumber"><i class="fa fa-circle-thin fa-2x" aria-hidden="true"></i>{{ num_cart_items }}</li>-->
-                 <span class="fa-stack fa-lg">
-  <i class="fa-stack-1x">{{num_cart_items}}</i>
-  <i class="fa fa-circle-o fa-2x" color="#820f0f;"></i>
-</span>
-            {% endif%}
+        
       </ul>
-         <!--<div class="container">
+      <form class="navbar-form navbar-right">
+        <div class="form-group">
+          <input type="text" class="form-control" placeholder="Search">
+        </div>
+        <button id="search_button" type="submit" class="btn btn-default"><i class="fa fa-search" aria-hidden="true"></i> Search</button>
+      </form>
+      
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
+
+<!--<div class="container">
     <h1>Open NOW!</h1>
    <div class="masthead">
        <ul class="nav nav-pills pull-right">
@@ -85,49 +81,47 @@
             
             {% if num_cart_items > 0 %}
                  <li>{{ num_cart_items }}</li>
-            {% endif%}-->  
-    </div><!-- /.navbar-collapse -->
-  </div><!-- /.container-fluid -->
-</nav>
+            {% endif%}-->
 
-{%block content%}
+        </ul>
+       <span class="fui-settings-12 muted"></div>
+       {% if messages %}
+        <div class="alert alert-success">
+            <div class="messages">
+                {% for message in messages %}
+                    {{ message }}
+                {% endfor %}
+            </div>
+        </div>
+    {% endif %}
 
-{%endblock content%}
-<footer>
-            <div class="row additionalinformation">
-            
-        <div class="col-lg-3 col-md-3 col-sm-2 col-xs-6">
-            <h4>About us</h4>
-                History
-                <br>Out Team
-                <br>Kitchen
-                <br>Quality
+    <div class="row">
+        <div class="col-sm-12 col-md-12 sidebar">
+            <ul class="nav nav-sidebar">
+                {% block sidebar %}
+                                <p>this is side bar</p> 
+                {% endblock sidebar %}
+            </ul>
         </div>
-        <div class="col-lg-4 col-md-3 col-sm-3 col-xs-6">
-            <h4>How it works?</h4>
-                    Orders
-                    <br>Payments
-                    <br>Delivery
-                    <br>Returns            
-        </div>
-        <div class="col-lg-5 col-md-6 col-sm-6 col-xs-12">
-            <div class="row">
-                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
-            <h4>Our Address</h4>
-                Address: 18 Meriadina Court
-                <br>Spindrift Avenue
-                <br>Roayal Canal Park
-                <br>Dublin 15, Ireland
-                </div>
-                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
-            <h4>Contact details</h4>
-                Mobile 087 74 333 88
-                <br>Phone Number: 01 88 8888
-                <br>Web: www.daddycook.com
-                <br>Email: daddycook@goodfood.com
-            <div>
+
+        <div class="row">
+        <div class="col-sm-12  col-md-12 main">
+            <div class="content">
+                {% block content %}
+                    <p>here is content</p>
+                {% endblock content%}
+            </div>
         </div>
     </div>
-</footer>
+
+
+    <!--<div class="col-sm-9  col-md-10 footer">
+            <div class="content">
+                <hr>
+               
+            </div>
+        </div>-->
+
 </body>
+
 </html>

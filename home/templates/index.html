@@ -1,8 +1,46 @@
 {% extends 'base.html' %}
 {% load static from staticfiles%}
 
-{% block content %}
+{%block content%}
+<body class="bg bglayer" style="background-image: url('{% static "images/back.jpeg" %}')";>
+<section> 
+    <div class="searchbar">
+        <div class="inline">
+             <h2>Look up for your favorite food!</h2>
+             <input type="text" class="form-control" placeholder="Search"><button id="search_button" type="submit" class="btn btn-default"><i class="fa fa-search" aria-hidden="true"></i> Search</button>
+        </div>
+    </div>
+</section>
 
-<h1>This Is Online Shop</h1>
 
-{% endblock content %}
+<div class="container delivery">
+    <img src="{% static "images/delivery1.png" %}" alt="delivery1" width="800px">
+</div>
+<footer class="indexfooter">
+    <div class="container row">
+        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+        <div class="phone">
+        <img src="{% static "images/phone.png" %}" alt="delivery1">
+        </div>
+        </div>
+                <div class="col-lg-7 col-md-7 col-sm-7 col-xs-7 footerbar">
+                    <div class="footerbarcontent">   
+                    <h1>Order on the move</h1>
+                    <h3>Simple and easy!</h3> 
+                    <h3>Now you can order your favorite food using mobile app.
+                    <div class="footerimages">
+                    <img src="{% static "images/android.png" %}" alt="delivery1" width="200px">
+                    <img src="{% static "images/apple.png" %}" alt="delivery1" width="173px">
+                    </h3>
+                    <div class="row">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 paymenttype">
+            <p>Payments accepted</p>
+            <img src="{% static "images/payments.png" %}" alt="payments" width="300px">
+        </div>
+    </div>
+                    </div>
+                    </div>
+                </div>
+</footer>
+</body>
+{%endblock content%}
