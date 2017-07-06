@@ -1,3 +1,75 @@
+.pagination{
+    display: inline-block;
+    padding-left: 0;
+    margin: 0 0 20px 0;
+    width: 100%;
+    text-align: center;
+}
+a.post-meta{
+    color:gray;
+}
+.productimages{
+    border-radius: 25px;
+    border: 4px double #e5e5e5;
+}
+.cookies{
+    width:100%;
+    position: absolute;
+    left: -700px;
+    -webkit-animation: slide 0.5s forwards;
+    -webkit-animation-delay: 1s;
+    animation: slide 0.5s forwards;
+    animation-delay: 1s;
+}
+@-webkit-keyframes slide {
+    100% { left: 0; }
+}
+@keyframes slide {
+    100% { left: 0; }
+}
+
+.nutt{
+    position: absolute;
+    margin-top: 70%;
+    max-width: 200px;
+    margin-left: 50%;
+    z-index: 999;
+    /*animation-delay: 2s; */
+    /*-webkit-animation-delay: 5s;*/
+    /*-webkit-animation: fadeIn 5s;*/
+    animation-name: fadeIn;
+     animation-timing-function: ease-in;
+     
+     animation-duration:3s;
+}
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+.note{
+    height: 100%;
+    padding: auto;
+    padding-top: 40px;
+    padding-left: -50px;
+}
+.productmenu{
+    padding: 0px 50px 0px 20px;
+}
+.products-container{
+    /*margin-left: 0;*/
+    margin: 0 0px;
+    padding-left: 0;
+}
+.productshow{
+    padding-left: 0;
+}
 .righticons{
     font-weight: normal;
     font-size: 11px;
@@ -114,9 +186,6 @@ button{
     border: none;
     background: none;
 }
-a{
-    color: green;
-}
 #banner{
     margin-top: 28px;
     margin-bottom: 20px;
@@ -170,6 +239,15 @@ background-size: cover;
 li{
     font-family: 'Roboto Mono', monospace;
     font-weight: bolder;
+}
+li.category-name a{
+    color: black;
+    
+}
+li.category-name{
+    list-style-type: none;
+    padding-left: 10px;
+    font-size: 11px;
 }
 a{
     color: white;
