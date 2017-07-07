@@ -29,6 +29,7 @@ from django.conf.urls import url, include
 from rest_framework import routers
 from products import views as product_views
 from cart import views as cart_views
+from search import urls as search_urls
 
 router = routers.DefaultRouter()
 router.register(r'products', product_views.ProductViewSet)
@@ -48,4 +49,5 @@ urlpatterns = [
     url(r'accounts/', include(accounts_urls)),
     url(r'user/', include(reset_urls)),
     url(r'^media/(?P<path>.*)$', static.serve,{'document_root': MEDIA_ROOT}),
+    url(r'^search/', include(search_urls)),
 ]

@@ -1,3 +1,24 @@
+
+i.fa-stack-1x {
+    left: -3px;
+    font-size: 11px;
+    top: -0.8px;
+}
+.size{
+    width: 1200px;
+}
+.plus{
+    margin-top: -40px;
+    color:#820f0f;
+    position: absolute;
+}
+.imageprices{
+    min-width: 200px;
+    padding:0px;
+}
+.closed{
+    width:100%;
+}
 .pagination{
     display: inline-block;
     padding-left: 0;
@@ -8,10 +29,20 @@
 a.post-meta{
     color:gray;
 }
-.productimages{
+.img-thumbnail{
+    width: 200px!important;
+    height: 200px!important;
+    padding-bottom: 30px;
+    display: block;
+    background-size: cover;
+    background-position: center;
+
+}
+/*.productimages{
     border-radius: 25px;
     border: 4px double #e5e5e5;
-}
+    padding-bottom: 40px;
+}*/
 .cookies{
     width:100%;
     position: absolute;
@@ -29,9 +60,9 @@ a.post-meta{
 }
 
 .nutt{
+    width: 200px;
     position: absolute;
     margin-top: 70%;
-    max-width: 200px;
     margin-left: 50%;
     z-index: 999;
     /*animation-delay: 2s; */
@@ -40,13 +71,16 @@ a.post-meta{
     animation-name: fadeIn;
      animation-timing-function: ease-in;
      
-     animation-duration:3s;
+     animation-duration:2s;
 }
 @keyframes fadeIn {
   0% {
     opacity: 0;
   }
   50% {
+    opacity: 0;
+  }
+  75% {
     opacity: 0;
   }
   100% {
@@ -69,11 +103,14 @@ a.post-meta{
 }
 .productshow{
     padding-left: 0;
+    height: 1000px;
 }
 .righticons{
     font-weight: normal;
     font-size: 11px;
     vertical-align: center;
+    font-family: 'Roboto Mono';
+    color: white;
 }
 span.fa-stack.fa-lg{
     position: relative;
@@ -209,7 +246,7 @@ table.table.table-striped > tbody > tr{
 }
 .row{
     width: 100%;
-    margin: 0px 10px;
+    padding: 0px 20px;
 }
 .bglayer{
     background-image: rgba(0,0,0,0.2);
@@ -229,10 +266,11 @@ background-size: cover;
     background-color: rgba(0,0,0,0.2);
     background-image: none;
     border: none;
+    border-radius: 0px;
 }
 
 .btn{
-    background: none;
+    
     background-image: none;
     border: none;
 }

@@ -80,8 +80,25 @@ def add_to_cart(request, id):
         )
 
     cartItem.save()
-    return redirect(reverse('cart'))
+    return redirect(reverse('products'))
 
+@login_required(login_url="/accounts/login")
+def add_plus(request, id):
+    product = get_object_or_404(Product, pk=id)
+    quantity= 1
+
+    try:
+        cartItem = CartItem.objects.get(user=request.user, product=product)
+        cartItem.quantity += 1
+    except CartItem.DoesNotExist:
+        cartItem = CartItem(
+            user=request.user,
+            product=product,
+            quantity=quantity
+        )
+
+    cartItem.save()
+    return redirect(reverse('categories'))
 
 def adjust_cart(request, id):
     quantity = request.POST['quantity']

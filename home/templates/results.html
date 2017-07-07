@@ -28,7 +28,7 @@
                 <!--{{ product.price }}-->
                     <form class="plus" method="post" action="{% url 'add_plus' product.id %}">
                         {% csrf_token %}
-                        <button type="submit" title='€{{ product.price }}'><i class="fa fa-plus fa-2x" aria-hidden="true"></i></button>
+                        <button type="submit" data-toggle="tooltip" title='€{{ product.price }}'><i class="fa fa-plus fa-2x" aria-hidden="true"></i></button>
                     </form>
                 </div>
         {% endfor %}

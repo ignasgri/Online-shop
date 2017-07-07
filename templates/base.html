@@ -1,4 +1,5 @@
 {% load static from staticfiles %}
+{% load bootstrap_tags %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,12 +10,13 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <link href="https://fonts.googleapis.com/css?family=Cousine|Permanent+Marker|Roboto+Mono|Dosis" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/3.3.6/cerulean/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link rel="stylesheet" href="{% static 'font-awesome/css/font-awesome.min.css' %}">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0-alpha1/jquery.min.js"></script>
+    
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-alpha/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="{% static 'font-awesome/css/customize.css' %}">
-    <link rel="shortcut icon" href="{% static 'favicon/favicon.ico' %}"/>
+    <link rel="shortcut icon" href="{% static 'images/favicon.png' %}"/>
     {% block head_js %}{% endblock %}
 </head>
 <body>
@@ -38,16 +40,20 @@
         <li><a href="{% url 'products' %}">PRODUCTS</a></li>
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">CATEGORIES <i class="fa fa-chevron-down" aria-hidden="true"></i></a>
-          <li><a class="blog"href="#">BLOG</a></li>
+          
           <ul class="dropdown-menu">
             <li><a href="{% url 'categories' %}">All categories</a></li>
-            <li><a href="#">Another action</a></li>
-            <li><a href="#">Something else here</a></li>
+            <li><a href="#">Breakfast</a></li>
+            <li><a href="#">Lunch</a></li>
+            <li><a href="#">Dinner</a></li>
+            <li><a href="#">Snacks</a></li>
+            <li><a href="#">Drinks</a></li>
             <li role="separator" class="divider"></li>
-            <li><a href="#">Separated link</a></li>
-            <li role="separator" class="divider"></li>
-            <li><a href="#">One more separated link</a></li>
+            <li><a href="#">Baby Food</a></li>
+            <!--<li role="separator" class="divider"></li>
+            <li><a href="#">One more separated link</a></li>-->
           </ul>
+          <li><a class="blog"href="#">BLOG</a></li>
           </ul>
         </li>
         <ul class="nav navbar-nav navbar-right">
@@ -55,9 +61,13 @@
                 <li class="righticons"><a href="{% url 'profile' %}"><i class="fa fa-user"></i> Profile</a></li>
                 <li class="righticons"><a href="{% url 'logout' %}"><i class="fa fa-sign-out"></i> Log Out</a></li>
             {%  else %}
-        <li class="righticons"><a href="{% url 'login' %}"><i class="fa fa-lock" aria-hidden="true"></i> Login</a></li>
+            <button type="button" class="righticons" data-toggle="modal" data-target="#myModal2"><i class="fa fa-plus" aria-hidden="true"></i> Login
+</button>
+        <!--<li class="righticons"><a href="{% url 'login' %}"><i class="fa fa-lock" aria-hidden="true"></i> Login</a></li>-->
         {% endif %}
-        <li class="righticons"><a href="{% url 'register' %}"><i class="fa fa-plus" aria-hidden="true"></i> SignUp</a></li>
+        <!-- Button trigger modal -->
+        <button type="button" class="righticons" data-toggle="modal" data-target="#myModal"><i class="fa fa-plus" aria-hidden="true"></i> SignUp
+</button>
       <ul class="nav navbar-nav navbar-right cart">
         <li><a a href="{% url 'cart' %}"><i class="fa fa-shopping-cart"></i> CART</a></li>
         {% if num_cart_items > 0 %}
@@ -91,13 +101,68 @@
   </div><!-- /.container-fluid -->
 </nav>
 
+
+
+<!-- Register Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Registration</h4>
+      </div>
+      <div class="modal-body">
+        ...
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Log in Modal -->
+<div class="modal fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Login</h4>
+      </div>
+      <div class="modal-body">
+
+
+<form method="post" action="{% url 'login' %}">
+    {% csrf_token %}
+  <table style="width:400px" >
+    <tr>
+      <td>First Name:</td>
+      <td><input type="text" name="username_or_email"></td>
+    </tr>
+  <tr>
+      <td>Password:</td>
+      <td><input type="password" name="password"></td>
+      
+  </tr>
+  </table>
+  <button type="submit" class="btn btn-primary" style="float:right">Login</button>
+</form>
+
+
+      </div>
+      <div class="modal-footer">
+        <!--<button type="submit" class="btn btn-primary">Login</button>-->
+        
+      </div>
+    </div>
+  </div>
+</div>
 {%block content%}
 
 {%endblock content%}
 
 <footer>
-            <div class="row additionalinformation">
-            
+    <div class="row additionalinformation">
         <div class="col-lg-3 col-md-3 col-sm-2 col-xs-6">
             <h4>About us</h4>
                 History
@@ -131,5 +196,6 @@
         </div>
     </div>
 </footer>
+<script rel="stylesheet" href="{% static 'js/customize.js' %}"></script>
 </body>
 </html>
