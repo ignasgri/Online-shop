@@ -2,26 +2,24 @@
    {% block content %}
 
 <div class="categories row">
-    <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1 ">
-<p>Categories list</p>
-        {% block sidebar %}
-        
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 ">
+       {% block sidebar %}
+                <div class="catnames">
+                    <h4>All products</h4>
     {% for category in root_categories %}
-        <li class="category-name"><a href="{% url 'category' category.id %}">{{ category.name }}</a></li>
+        <div class="category-name"><a href="{% url 'category' category.id %}">{{ category.name }}</a></div>
     {% endfor %}
-<hr>
+                </div>
 
-    {% for category in subcategories %}
-        <li class="category-name"><a href="{% url 'category' category.id %}">{{ category.name }}</a></li>
-    {% endfor %}
-{% endblock sidebar %}
+        <input type="text" placeholder="Search"><button type="submit"><i class="fa fa-search" aria-hidden="true"></i></button>
+    {% endblock sidebar %}
 
     </div>
 
 
-    <div class="col-lg-11 col-md-11 col-sm-11 col-xs-11 size">
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 row size">
 
-    <div class="row">
+
         {% for product in products %}
                 <div class="imageprices col-md-2">
                 <img height="200" width="200" src="{{ MEDIA_URL }}{{ product.image }}">
@@ -32,7 +30,7 @@
                     </form>
                 </div>
         {% endfor %}
-    </div>
+    
 </div>
 </div>
 {% endblock content %}

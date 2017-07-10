@@ -58,15 +58,15 @@
         </li>
         <ul class="nav navbar-nav navbar-right">
              {% if user.is_authenticated %}
-                <li class="righticons"><a href="{% url 'profile' %}"><i class="fa fa-user"></i> Profile</a></li>
+                <li class="righticons"><a href="{% url 'profile' %}"><i class="fa fa-user-circle-o" aria-hidden="true"></i> Profile</a></li>
                 <li class="righticons"><a href="{% url 'logout' %}"><i class="fa fa-sign-out"></i> Log Out</a></li>
             {%  else %}
-            <button type="button" class="righticons" data-toggle="modal" data-target="#myModal2"><i class="fa fa-plus" aria-hidden="true"></i> Login
+            <button type="button" class="righticons" data-toggle="modal" data-target="#modalLogin"><i class="fa fa-plus" aria-hidden="true"></i> Login
 </button>
         <!--<li class="righticons"><a href="{% url 'login' %}"><i class="fa fa-lock" aria-hidden="true"></i> Login</a></li>-->
         {% endif %}
         <!-- Button trigger modal -->
-        <button type="button" class="righticons" data-toggle="modal" data-target="#myModal"><i class="fa fa-plus" aria-hidden="true"></i> SignUp
+        <button type="button" class="righticons" data-toggle="modal" data-target="#modalRegister"><i class="fa fa-plus" aria-hidden="true"></i> SignUp
 </button>
       <ul class="nav navbar-nav navbar-right cart">
         <li><a a href="{% url 'cart' %}"><i class="fa fa-shopping-cart"></i> CART</a></li>
@@ -104,55 +104,78 @@
 
 
 <!-- Register Modal -->
-<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+<div class="modal fade" id="modalRegister" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
-      <div class="modal-header">
+
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
         <h4 class="modal-title" id="myModalLabel">Registration</h4>
-      </div>
+
       <div class="modal-body">
-        ...
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
+        <form method="post" action="{% url 'register' %}">
+    {% csrf_token %}
+  
+      <i class="fa fa-user fa-2x" style="color:white" aria-hidden="true"></i>
+      <input type="text" class="textfield" placeholder="User name or email" name="username_or_email" >
+   
+      <i class="fa fa-lock fa-2x" style="color:white" aria-hidden="true" ></i>
+      <input type="password" class="textfield" placeholder="Your password" name="password1">
+      
+      
+      <i class="fa fa-lock fa-2x" style="color:white" aria-hidden="true" ></i>
+      <i class="fa fa-repeat passreapeat" aria-hidden="true"></i>
+      
+      <input type="password" class="textfield" placeholder="Reapeat your password" name="password2">
+
+  <button type="submit" class="btn btn-success buttonlg" ><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Quick Register</button>
+  <button type="submit" class="btn btn-danger buttonrs"><i class="fa fa-link" aria-hidden="true"></i> Full Registration Form</button>
+</form>
       </div>
     </div>
   </div>
 </div>
 <!-- Log in Modal -->
-<div class="modal fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+<div class="modal fade" id="modalLogin" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
   <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
+    <div class="modal-content loginsize">
+      
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
         <h4 class="modal-title" id="myModalLabel">Login</h4>
-      </div>
+      
       <div class="modal-body">
 
 
 <form method="post" action="{% url 'login' %}">
     {% csrf_token %}
-  <table style="width:400px" >
-    <tr>
-      <td>First Name:</td>
-      <td><input type="text" name="username_or_email"></td>
-    </tr>
-  <tr>
-      <td>Password:</td>
-      <td><input type="password" name="password"></td>
+  
+      <i class="fa fa-user fa-2x" style="color:white" aria-hidden="true"></i>
+      <input type="text" class="textfield" name="username_or_email" >
+   
+      <i class="fa fa-lock fa-2x" style="color:white" aria-hidden="true" ></i>
+      <input type="password" class="textfield" name="password">
       
-  </tr>
-  </table>
-  <button type="submit" class="btn btn-primary" style="float:right">Login</button>
+  <button type="submit" class="btn btn-success buttonlg" >Login</button>
+  <!--<button type="submit" class="btn btn-danger buttonrs">Reset</button>-->
 </form>
 
 
+      
+      <div class="footer">
+        <button type="submit" class="btn btn-danger buttonrs" data-toggle="collapse" data-target="#resetfield"><i class="fa fa-key fa-rotate-90" aria-hidden="true"></i> Reset</button>
+  <div id="resetfield" class="collapse">
+    <form method="post" action="{% url 'password_reset' %}">
+    {% csrf_token %}
+      <i class="fa fa-cogs fa-2x reset-user" style="color:white" aria-hidden="true"></i>
+      <input type="text" class="textfield reset-field" name="username_or_email" >
+  <button type="submit" class="btn btn-warning buttonwr"><i class="fa fa-exclamation-triangle" aria-hidden="true"></i> Reset confirmation</button>
+  <!--<button type="submit" class="btn btn-danger buttonrs">Reset</button>-->
+</form>
+</div>
+  </div>
+  </form>
       </div>
-      <div class="modal-footer">
-        <!--<button type="submit" class="btn btn-primary">Login</button>-->
         
+        </div>
       </div>
     </div>
   </div>
@@ -161,7 +184,7 @@
 
 {%endblock content%}
 
-<footer>
+<!--<footer>
     <div class="row additionalinformation">
         <div class="col-lg-3 col-md-3 col-sm-2 col-xs-6">
             <h4>About us</h4>
@@ -195,7 +218,7 @@
             <div>
         </div>
     </div>
-</footer>
+</footer>-->
 <script rel="stylesheet" href="{% static 'js/customize.js' %}"></script>
 </body>
 </html>

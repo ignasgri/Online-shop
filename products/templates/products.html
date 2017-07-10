@@ -4,22 +4,23 @@
 
 <div class="products-container">
     <div class="col-lg-4 col-md-4 col-sm-2 col-xs-6 productshow">
+    <div class="productwraper">
             <img class="cookies"src="{% static "images/cookies.png" %}" alt="cookies">
             <img class="nutt" src="{% static "images/nutt.png" %}" alt="nutritional"> 
+    </div>
         </div>
-        <div class="col-lg-2 col-md-3 col-sm-3 col-xs-6 productcategories">
+        <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8 productcategories">
             
-                <div class="col-lg-12 col-md-3 col-sm-3 col-xs-6 row">
-                    <h4>Product categories</h4>
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 row">
+                 
                          {% block sidebar %}
+                <div class="catnames">
+                    <h4>Categories</h4>
     {% for category in root_categories %}
-        <li class="category-name"><a href="{% url 'category' category.id %}">{{ category.name }}</a></li>
+        <div class="category-name"><a href="{% url 'category' category.id %}">{{ category.name }}</a></div>
     {% endfor %}
-<hr>
+                </div>
 
-    {% for category in subcategories %}
-        <li class="category-name"><a href="{% url 'category' category.id %}">{{ category.name }}</a></li>
-    {% endfor %}
         <input type="text" placeholder="Search"><button type="submit"><i class="fa fa-search" aria-hidden="true"></i></button>
     {% endblock sidebar %}
 
@@ -33,19 +34,16 @@
                 <li><a href="{% url 'category' crumb.id %}">{{ crumb.name }}</a></li>
             {% endif %}
         {% endfor %}
-    </ol>-->
-                </div>
-                <div class="col-lg-12 col-md-3 col-sm-3 col-xs-6 row note">
-                </div>           
+    </ol>-->          
         
     </div>
-        <div class="col-lg-6 col-md-6 col-sm-3 col-xs-6 productmenu">
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 row productmenu">
                 
             <table class="table table-striped">
         <thead>
         <tr>
             <th></th>
-            <th>Name</th>
+            <th>Description</th>
             <th>Price</th>
             <th>Cart</th>
         </tr>
@@ -53,7 +51,7 @@
         <tbody>
         {% for product in products %}
             <tr>
-                <td><img class="img-thumbnail" height="200" width="200" src="{{ MEDIA_URL }}{{ product.image }}"></td>
+                <td><img class="product-image" src="{{ MEDIA_URL }}{{ product.image }}"></td>
                 
                 <td>{{ product.name }}</td>
                 
@@ -88,11 +86,6 @@
     </span>
     </div>         
         </div>
-</div>
-
-<div>
-    
-    <p>This is product line</p>
 </div>
     
 
