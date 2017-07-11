@@ -13,6 +13,38 @@
 {% endblock %}
 
 {% block content %}
+<div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 row">
+    <div class="productwraper">
+            <img class="paymentsPic"src="{% static "images/pay.png" %}" alt="cookies">
+    </div>
+
+<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 row address-place">
+    <h3>Pick your delivery data</h3>
+        <form>
+            
+  <input class="days" type="date" name="days" min="2017-07-10">
+  <input class="time" type="time" name="hours" min="00:00"><br>
+</form>
+
+    <h3>Enter your delivery address</h3>
+        <input class="address" type="checkbox" name="address" value="delivery_address">Use dafault shipping address
+
+<button class="btn" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+    <i class="fa fa-plus-square-o" aria-hidden="true"></i> Add new shipping address
+  </button>
+</p>
+<div class="collapse" id="collapseExample">
+  <div class="card card-block">
+        <input class="address-box" placeholder="Address line 1" type="text"><input class="address-box" placeholder="Address line 2" type="text"><input class="address-box" placeholder="Address line 3" type="text">
+        <input class="address-box" placeholder="Area" type="text">
+        <input class="address-box" placeholder="Post code" type="text">
+        <button type="button" class="add-button">Add</button>
+     </div>
+</div>
+</div>
+</div>
+
+<div class="col-lg-8 col-md-8 col-sm-8 col-xs-8 ">
     <table class="table table-striped">
         <thead>
         <tr>
@@ -27,7 +59,7 @@
         <tbody>
         {% for item in items %}
             <tr>
-                <td><img height="100" width="100" src="{{ MEDIA_URL }}{{ item.product.image }}"></td>
+                <td><img height="50" width="50" src="{{ MEDIA_URL }}{{ item.product.image }}"></td>
                 <td>{{ item.product.name }}</td>
                 <td>{{ item.product.description }}</td>
                 <td>{{ item.product.price }}</td>
@@ -55,20 +87,98 @@
         </tbody>
     </table>
 
-    <hr>
+<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 row">
+<!-- Button trigger modal -->
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+  Pay
+</button>
 
-    <form role="form" method="post" id="payment-form" action="{% url 'cart' %}">
+
+
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+    
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      
+      <div class="modal-body2">
+
+
+
+<form role="form" method="post" id="payment-form" action="{% url 'cart' %}">
+        <div id="credit-card-errors" style="display:none">
+            <div class="alert-message block-message error" id="stripe-error-message"></div>
+        </div>
+
+        <legend>Secured Payment</legend>
+        
+        <img class="card" src="/static/images/visa.png">
+        
+        <div class="card-details">
+        {% csrf_token %}
+        {{ form | as_bootstrap }}
+        </div>
+        
+        <div class="form-group">
+            <input class="btn btn-success button" id="submit_payment_btn" name="commit" type="submit" value="Confirm payment">
+            <button type="button" class="btn btn-danger">Cancel Order</button>
+        </div>
+>
+    </form>
+</div>
+
+
+
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <!--<button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+    <i class="fa fa-credit-card-alt" aria-hidden="true"></i> Ready to pay?
+  </button>
+</p>
+<div class="collapse" id="collapseExample">
+  <div class="card card-block">
+
+
+<form role="form" method="post" id="payment-form" action="{% url 'cart' %}">
         <div id="credit-card-errors" style="display:none">
             <div class="alert-message block-message error" id="stripe-error-message"></div>
         </div>
 
         <legend>Pay Now!</legend>
-
+        <
+        <img src="/static/images/visa.png">
         {% csrf_token %}
         {{ form | as_bootstrap }}
+        
         <div class="form-group">
             <input class="btn btn-primary" id="submit_payment_btn" name="commit" type="submit" value="Submit Payment">
         </div>
     </form>
+
+
+
+  </div>
+</div>-->
+    
 
 {% endblock %}

@@ -60,7 +60,8 @@
                     <form method="post" action="{% url 'add_to_cart' product.id %}">
                         {% csrf_token %}
                         Quantity
-                        <input name='quantity' type="number" min="1" max="999">
+
+                   <input name='quantity' type="number" min="1" max="999">
                         <!--<button type="submit">Add</button>-->
                         <button i class="fa fa-shopping-basket" aria-hidden="true" type="submit"></i></button>
                     </form>
@@ -87,7 +88,8 @@
     </div>         
         </div>
 </div>
-    
+                         
+        
 
 
 

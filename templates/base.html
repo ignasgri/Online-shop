@@ -10,13 +10,17 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <link href="https://fonts.googleapis.com/css?family=Cousine|Permanent+Marker|Roboto+Mono|Dosis" rel="stylesheet">
+    <style type="text/css">@font-face {font-family: "CREDC";src:url('{% static 'font-awesome/fonts/CREDC.ttf' %}');}</style>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{% static 'font-awesome/css/balloon.css' %}">
     <link rel="stylesheet" href="{% static 'font-awesome/css/font-awesome.min.css' %}">
+    <link rel="stylesheet" href="{% static 'font-awesome/fonts/CREDC.ttf' %}">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0-alpha1/jquery.min.js"></script>
     
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-alpha/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="{% static 'font-awesome/css/customize.css' %}">
     <link rel="shortcut icon" href="{% static 'images/favicon.png' %}"/>
+    
     {% block head_js %}{% endblock %}
 </head>
 <body>
@@ -128,7 +132,8 @@
       <input type="password" class="textfield" placeholder="Reapeat your password" name="password2">
 
   <button type="submit" class="btn btn-success buttonlg" ><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Quick Register</button>
-  <button type="submit" class="btn btn-danger buttonrs"><i class="fa fa-link" aria-hidden="true"></i> Full Registration Form</button>
+  <button type="submit" class="btn btn-danger buttonregs" data-balloon-length="large" data-balloon='Register and get benefits with every order such as free food, discounts, special offers, extra gifts. Its gonna take only 5 minutes.' data-balloon-pos="down"><i class="fa fa-link" aria-hidden="true"></i> Full Registration Form</button>
+  <!--<button type="submit" class="btn btn-danger buttonrs"><i class="fa fa-link" aria-hidden="true"></i> Full Registration Form</button>-->
 </form>
       </div>
     </div>

@@ -73,6 +73,12 @@ input:-webkit-autofill {
     border-radius: 0px;
     margin-left: 15px;
 }
+.buttonregs{
+    width: 225px;
+    border-radius: 0px;
+    margin-left: 15px;
+    float: right;
+}
 .buttonwr{
     width: 100%;
     border-radius: 0px;
@@ -145,6 +151,7 @@ i.fa-stack-1x {
 .imageprices{
     width: 200px;
     padding:0px;
+    display: inline-block;
 }
 .closed{
     width:100%;
@@ -241,7 +248,7 @@ a.post-meta{
 
 }
 .size{
-    display: block; 
+    display: inline-block; 
 }
 .righticons{
     font-weight: normal;
@@ -289,7 +296,6 @@ i.fa-stack-1x{
 }
 .footerbar{
     text-align: center;
-    padding: 100px 200px 0px 100px;
 }
 .footerbarcontent h1{
     font-size: 80px;
@@ -300,6 +306,11 @@ i.fa-stack-1x{
 .footerbarcontent h3{
     font-family: 'dosis';
     color:white;
+}
+.footerbarcontent{
+    display: block;
+    padding-top: 30px;
+
 }
 .indexfooter{
     margin-top:150px;
@@ -332,14 +343,16 @@ footer{
     padding-bottom: 20px;
     color: white;
 }
-.form-control{
+.search-form-control{
     vertical-align: middle;
     text-align: center !important;
    margin-right:5px;
     width: 500px;
     height: 50px;
-    font-size: 30px;
+    font-size: 30px!important;
     display: inline !important;
+    border-radius: 4px!important;
+    border: none;
 }
 .searchbar{
     
@@ -383,7 +396,9 @@ table.table.table-striped > tbody > tr{
     margin-top: 50px;
 }
 .row{
-    margin: 0;
+    /*margin: 0;*/
+    /*text-align: center;*/
+
 }
 .catnames{
     display: inline-flex;
@@ -421,6 +436,7 @@ background-size: cover;
     
     background-image: none;
     border: none;
+    height: 50px;
 }
 li{
     font-family: 'Roboto Mono', monospace;
@@ -443,4 +459,124 @@ a.blog{
     padding-top: 20px;
     transform: scale(3);
     transition: all 1s;
+}
+/*credit card css, cart.html*/
+#payment-form{
+    display: inline-block;
+    width: 100%;
+}
+.card{
+    position: relative;
+    width: 100%;
+}
+.card-details{
+    /*position: relative;*/
+        position: absolute;
+    height: 30%;
+    text-align: center;
+    width: 100%;
+    margin: auto;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    font-size: 30px;
+}
+label{
+    display: none;
+}
+/*.form-group{
+    height: 20px;
+    width: 250px;
+}*/
+.form-control{
+    width: 200px;
+    height: 30px;
+    font-size: 10px;
+    background-color: rgba(0,0,0,0.1);
+    border: none;
+    text-shadow: 2px;
+    color: black;
+}
+#id_credit_card_number{
+    font-size: 14px;
+    color: white;
+    text-shadow: 2px 0px 2px black;
+    font-family: 'CREDC';
+    position: relative;
+    display: inline-block;
+    width: 80%;
+    height: 5%;
+}
+#id_expiry_month{
+    margin-left:30px;
+    position: absolute;
+
+}
+.address-box{
+    width: 70%;
+    text-align: center;
+    border: 1px solid whitesmoke;
+    font-size: 10px!important;
+}
+.address-place{
+    display: block;
+    width: 100%;
+}
+.add-button{
+    height:20px;
+    width: 100%;
+    font-size: 10px;
+    margin-top: 10px;
+    border: 1px solid black; 
+}
+.paymentsPic{
+    width:100%;
+    position: relative;
+    left: -700px;
+    -webkit-animation: slide 0.5s forwards;
+    -webkit-animation-delay: 1s;
+    animation: slide 0.5s forwards;
+    animation-delay: 1s;
+}
+@-webkit-keyframes slide {
+    100% { left: 0; }
+}
+@keyframes slide {
+    100% { left: 0; }
+}
+@media (max-width: 1200px){
+.phone {
+    width: 400px;
+}
+.footerbarcontent h1{
+    transition: 1s ease-in;
+    font-size: 30px;
+}
+.footerbarcontent h3{
+    transition: 1s ease-in;
+    font-size: 15px;
+}}
+@media (max-width: 800px){
+.phone {
+    display: none;
+}
+.footerbarcontent h1{
+    transition: 1s ease-in;
+    font-size: 30px;
+    margin-left: -40%;
+}
+.footerbarcontent h3{
+    transition: 1s ease-in;
+    font-size: 15px;
+    margin-left: -40%;
+}
+.pay{
+    transition: 1s ease-in;
+    font-size: 15px;
+    margin-left: -40%;
+}
+.pay h3{
+    padding-left: 130px;
+}
 }
