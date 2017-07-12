@@ -2,8 +2,10 @@
 .modal-content{
     background-color: rgba(255,255,255,0.1);
     border-radius: 0px;
-    text-align: center;
-    
+    text-align: center; 
+}
+.modal-height{
+    height: 360px;
 }
 #myModalLabel{
     color: white;
@@ -23,6 +25,19 @@
     margin-right: 7px;
 }
 
+.close-card{
+        float: right;
+    font-size: 21px;
+    font-weight: 700;
+    line-height: 1;
+    color: white;
+    margin-top: 12px;
+    margin-right: 7px;
+    position: absolute;
+    z-index: 1;
+    left: 90%;
+    color: gray;
+}
 input.textfield{
     background-color: transparent;
     border: 1px solid white;
@@ -56,9 +71,11 @@ input:-webkit-autofill {
     color: white;
     font-weight: bold; 
 }
-.collapse.in{
-    display: inline-block;
-    width: 100%;
+.navbar-collapse {
+    text-align: center;
+}
+.navbar-collapse.in{
+    overflow-y: visible!important;
 }
 .reset-user{
     padding-top: 20px;
@@ -124,7 +141,24 @@ input:-webkit-autofill {
 .img-profile{
     padding: 0px;
 }
+video{
+    position: absolute;
+    top: 0;
+    height: 705px;
+    background-size: cover;
+    background-position: center center;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    width: 100%;
+    object-fit: fill;
+    z-index: -1;
+}
+.deliv{
+    z-index: 1;
+    top: -50px;
+    position: relative;
 
+}
 
 
 
@@ -248,7 +282,14 @@ a.post-meta{
 
 }
 .size{
-    display: inline-block; 
+    display: inline-block;
+    text-align: center;
+}
+.allProducts{
+    text-align: center;
+}
+.searchResults{
+    text-align: center;
 }
 .righticons{
     font-weight: normal;
@@ -310,10 +351,9 @@ i.fa-stack-1x{
 .footerbarcontent{
     display: block;
     padding-top: 30px;
-
 }
 .indexfooter{
-    margin-top:150px;
+    background-color: black;
 }
 .phone{
     /*width: 100%;*/
@@ -330,6 +370,7 @@ footer{
 .delivery{
     text-align: center;
     padding-top:470px;
+    z-index: 1;
     }
 .inline{
     margin-top: 20px;
@@ -347,7 +388,7 @@ footer{
     vertical-align: middle;
     text-align: center !important;
    margin-right:5px;
-    width: 500px;
+    max-width: 50%;
     height: 50px;
     font-size: 30px!important;
     display: inline !important;
@@ -355,18 +396,18 @@ footer{
     border: none;
 }
 .searchbar{
-    
     height: 200px;
     width:100%;
     background-color: rgba(0,0,0,0.5);
     position: absolute;
-    margin-top: 170px;
+    margin-top: 150px;
 }
 #search_button{
     background-color: #e8a93c;
     color: white;
     font-size: 20px;
-
+}.search-inline{
+    display: inline;
 }
 button{
     height: 50px;
@@ -398,7 +439,9 @@ table.table.table-striped > tbody > tr{
 .row{
     /*margin: 0;*/
     /*text-align: center;*/
-
+}
+.icon-bar{
+    background-color: white;
 }
 .catnames{
     display: inline-flex;
@@ -430,6 +473,7 @@ background-size: cover;
     background-image: none;
     border: none;
     border-radius: 0px;
+    z-index: 1;
 }
 
 .btn{
@@ -465,6 +509,16 @@ a.blog{
     display: inline-block;
     width: 100%;
 }
+.modal-body-3{
+    text-align: center;
+}
+.modal-content-3 {
+    background-color: rgba(255,255,255,0);
+    border-radius: 0px;
+    text-align: center;
+    border: none;
+    box-shadow: none;
+}
 .card{
     position: relative;
     width: 100%;
@@ -499,19 +553,60 @@ label{
     color: black;
 }
 #id_credit_card_number{
-    font-size: 14px;
+    font-size: 16px!important;
+    text-align: center;
     color: white;
     text-shadow: 2px 0px 2px black;
     font-family: 'CREDC';
     position: relative;
     display: inline-block;
-    width: 80%;
-    height: 5%;
+    width: 70%;
+    top: 40px;
+    height: 40px;
+    letter-spacing: 5px;
 }
 #id_expiry_month{
-    margin-left:30px;
+    left: 160px;
     position: absolute;
-
+    width: 62px;
+    top: 100px;
+    font-family: 'CREDC';
+    color: white;
+    text-shadow: 2px 0px 2px black;
+}
+#id_expiry_year{
+    left: 270px;
+    position: absolute;
+    width: 80px;
+    top: 100px;
+    font-family: 'CREDC';
+    color: white;
+    text-shadow: 2px 0px 2px black;
+}
+#id_cvv{
+    position: absolute;
+    width: 50px;
+    left: 400px;
+    top: 100px;
+    font-family: 'CREDC';
+    color: white;
+    text-shadow: 2px 0px 2px black;
+}
+.name-filed{
+    width: 420px;
+    height: 40px;
+    position: absolute!important;
+    left: 90px;
+    top: 300px;
+    background: transparent;
+    background-color: rgba(0,0,0,0.1);
+    border: none;
+    border-radius: 4px;
+    font-family: 'CREDC';
+    font-size: 30px!important;
+    color: white;
+    text-align: center;
+    text-shadow: 2px 0px 2px black;
 }
 .address-box{
     width: 70%;
@@ -522,6 +617,8 @@ label{
 .address-place{
     display: block;
     width: 100%;
+    padding-left: 30px;
+    margin: auto;
 }
 .add-button{
     height:20px;

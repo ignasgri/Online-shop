@@ -9,9 +9,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="">
+    <link rel="stylesheet" href="{% static 'font-awesome/css/tippy.css' %}">
     <link href="https://fonts.googleapis.com/css?family=Cousine|Permanent+Marker|Roboto+Mono|Dosis" rel="stylesheet">
     <style type="text/css">@font-face {font-family: "CREDC";src:url('{% static 'font-awesome/fonts/CREDC.ttf' %}');}</style>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{% static 'font-awesome/css/tippy.css' %}">
     <link rel="stylesheet" href="{% static 'font-awesome/css/balloon.css' %}">
     <link rel="stylesheet" href="{% static 'font-awesome/css/font-awesome.min.css' %}">
     <link rel="stylesheet" href="{% static 'font-awesome/fonts/CREDC.ttf' %}">
@@ -20,7 +22,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-alpha/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="{% static 'font-awesome/css/customize.css' %}">
     <link rel="shortcut icon" href="{% static 'images/favicon.png' %}"/>
-    
+    <link rel="stylesheet" href="{% static 'font-awesome/css/tippy.css' %}">
     {% block head_js %}{% endblock %}
 </head>
 <body>
@@ -46,18 +48,15 @@
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">CATEGORIES <i class="fa fa-chevron-down" aria-hidden="true"></i></a>
           
           <ul class="dropdown-menu">
-            <li><a href="{% url 'categories' %}">All categories</a></li>
-            <li><a href="#">Breakfast</a></li>
-            <li><a href="#">Lunch</a></li>
-            <li><a href="#">Dinner</a></li>
-            <li><a href="#">Snacks</a></li>
-            <li><a href="#">Drinks</a></li>
-            <li role="separator" class="divider"></li>
-            <li><a href="#">Baby Food</a></li>
+            <li><a href="{% url 'categories' %}">All products</a></li>
+            <li>{% for category in root_categories %}
+            <li class="category-name"><a href="{% url 'category' category.id %}">{{ category.name }}</a></li>
+            {% endfor %}</li>
             <!--<li role="separator" class="divider"></li>
             <li><a href="#">One more separated link</a></li>-->
           </ul>
           <li><a class="blog"href="#">BLOG</a></li>
+<!--<button class="btn tippy" data-animatefill="false" data-position="bottom" data-tooltipped="" aria-describedby="tippy-tooltip-2" data-original-title="Look at me on the bottom! 🙃"><i class="material-icons icon-left">compare_arrows</i>Positioning</button>-->
           </ul>
         </li>
         <ul class="nav navbar-nav navbar-right">
@@ -73,7 +72,12 @@
         <button type="button" class="righticons" data-toggle="modal" data-target="#modalRegister"><i class="fa fa-plus" aria-hidden="true"></i> SignUp
 </button>
       <ul class="nav navbar-nav navbar-right cart">
+      {% if user.is_authenticated %}
         <li><a a href="{% url 'cart' %}"><i class="fa fa-shopping-cart"></i> CART</a></li>
+      {% else %}
+            <button type="button" class="righticons" data-toggle="modal" data-target="#modalLogin"><i class="fa fa-shopping-cart" aria-hidden="true"></i> Cart
+      {% endif %}
+
         {% if num_cart_items > 0 %}
                  <!--<li class="cartnumber"><i class="fa fa-circle-thin fa-2x" aria-hidden="true"></i>{{ num_cart_items }}</li>-->
                  <span class="fa-stack fa-lg">
@@ -110,7 +114,7 @@
 <!-- Register Modal -->
 <div class="modal fade" id="modalRegister" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
   <div class="modal-dialog" role="document">
-    <div class="modal-content">
+    <div class="modal-content modal-height">
 
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
         <h4 class="modal-title" id="myModalLabel">Registration</h4>
@@ -168,11 +172,12 @@
       <div class="footer">
         <button type="submit" class="btn btn-danger buttonrs" data-toggle="collapse" data-target="#resetfield"><i class="fa fa-key fa-rotate-90" aria-hidden="true"></i> Reset</button>
   <div id="resetfield" class="collapse">
+
     <form method="post" action="{% url 'password_reset' %}">
     {% csrf_token %}
       <i class="fa fa-cogs fa-2x reset-user" style="color:white" aria-hidden="true"></i>
-      <input type="text" class="textfield reset-field" name="username_or_email" >
-  <button type="submit" class="btn btn-warning buttonwr"><i class="fa fa-exclamation-triangle" aria-hidden="true"></i> Reset confirmation</button>
+      <input type="email" class="textfield reset-field" name="id_email" >
+  <button type="submit" name="password_reset" class="btn btn-warning buttonwr"><i class="fa fa-exclamation-triangle" aria-hidden="true"></i> Reset confirmation</button>
   <!--<button type="submit" class="btn btn-danger buttonrs">Reset</button>-->
 </form>
 </div>
@@ -224,6 +229,8 @@
         </div>
     </div>
 </footer>-->
+
 <script rel="stylesheet" href="{% static 'js/customize.js' %}"></script>
+<script rel="stylesheet" href="{% static 'js/tippy.js' %}"></script>
 </body>
 </html>

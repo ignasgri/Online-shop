@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
    {% block content %}
 
-<div class="categories row ">
+<div class="allProducts">
     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 ">
        {% block sidebar %}
                 <div class="catnames">
@@ -10,9 +10,11 @@
         <div class="category-name"><a href="{% url 'category' category.id %}">{{ category.name }}</a></div>
     {% endfor %}
                 </div>
-
-        <input type="text" placeholder="Search"><button type="submit"><i class="fa fa-search" aria-hidden="true"></i></button>
-    {% endblock sidebar %}
+<form class="search-inline" method='GET' action="{% url 'search' %}">
+             <input type="text" name="search" placeholder="Search">
+             <button id="search" type="submit"><i class="fa fa-search" aria-hidden="true"></i> Search</button>
+             </form>
+   {% endblock sidebar %}
 
     </div>
 
