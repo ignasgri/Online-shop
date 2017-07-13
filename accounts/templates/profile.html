@@ -9,12 +9,14 @@
 
 <div class="container container-box">
   <div class="row">
-    <div class="col-lg-3 col-md-3 col-sm-6 col-xs-6">
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 profile-top">
         <img src="{% gravatar_url user.email 150 %}" style="width:150px; height: 150px; background-color: #12ABB2; color: #ffffff;" class="img-circle">
+        <h1>Hello {{ user.first_name }}</h1>
     </div>
-    <div class="col-lg-9 col-md-9 col-sm-6 col-xs-6 info-box">
+    <div class="col-lg-9 col-md-9 col-sm-6 col-xs-6 row info-box">
       <table>
           <tr>
+        Your information
       <td>Name:</td>
       <td>{{ user.first_name }}</td>
       </tr>
@@ -29,7 +31,7 @@
       </table>
     </div>
     <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
-      1 of 3
+      Kids information
     </div>
   </div>
 </div>

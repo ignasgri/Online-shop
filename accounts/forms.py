@@ -5,14 +5,15 @@ from django.contrib.auth.models import User
 
 
 
+
 class UserLoginForm(forms.Form):
     username_or_email = forms.CharField()
     password = forms.CharField(widget=forms.PasswordInput)
+    
 
 
 class UserRegistrationForm(UserCreationForm):
     password1 = forms.CharField(label='Password', widget=forms.PasswordInput)
-
     password2 = forms.CharField(
         label='Password Confirmation',
         widget=forms.PasswordInput
@@ -34,6 +35,7 @@ class UserRegistrationForm(UserCreationForm):
 
     def save(self, commit=True):
         instance = super(UserRegistrationForm, self).save(commit=False)
+        
 
         if commit:
             instance.save()
