@@ -2,154 +2,73 @@
 {% load static from staticfiles %}
 {% block content %}
 
-<div class="products-container">
+<div class="products-container"><!--1-->
     <div class="col-lg-4 col-md-4 col-sm-2 col-xs-6 productshow">
-    <div class="productwraper">
+        <div class="productwraper">
             <img class="cookies"src="{% static "images/cookies.png" %}" alt="cookies">
-            <img class="nutt" src="{% static "images/nutt.png" %}" alt="nutritional"> 
-    </div>
+            <img class="nutt" src="{% static "images/rec.jpg" %}" alt="nutritional"> 
         </div>
-        <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8 productcategories">
-            
-                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 searchResults">
-                 
-                         {% block sidebar %}
-                <div class="catnames">
-                    <h4>Categories</h4>
-    {% for category in root_categories %}
-        <div class="category-name"><a href="{% url 'category' category.id %}">{{ category.name }}</a></div>
-    {% endfor %}
+    </div>
+        <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8 productcategories"><!--2-->
+                <div class="row">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 searchResults">
+                        {% block sidebar %}
+                            <div class="catnames">
+                                <h4>Categories</h4>
+                        {% for category in root_categories %}
+                                    <div class="category-name"><a href="{% url 'category' category.id %}">{{ category.name }}</a></div>
+                        {% endfor %}
+                            </div>
+                                <form class="search-inline" method='GET' action="{% url 'search' %}">
+                                    <input type="text" name="search" placeholder="Search">
+                                    <button id="search" type="submit"><i class="fa fa-search" aria-hidden="true"></i> Search</button>
+                                </form>
+                        {% endblock sidebar %}
+                    </div>
                 </div>
-<form class="search-inline" method='GET' action="{% url 'search' %}">
-             <input type="text" name="search" placeholder="Search">
-             <button id="search" type="submit"><i class="fa fa-search" aria-hidden="true"></i> Search</button>
-             </form>
-    {% endblock sidebar %}
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 row productmenu">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th></th>
+                            <th>Description</th>
+                            <th>Price</th>
+                            <th>Cart</th>
+                        </tr>
+                    </thead>
+                        <tbody>
+                {% for product in products %}
+                            <tr>
+                                <td><img class="product-image" src="{{ MEDIA_URL }}{{ product.image }}"></td>
+                                <td>{{ product.name }}</td>
+                                <td>{{ product.price }}</td>
+                                <td>
+                                    <form method="post" action="{% url 'add_to_cart' product.id %}">
+                {% csrf_token %}
+                    Quantity
+                                        <input name='quantity' type="number" min="1" max="999">
+                                        <button i class="fa fa-shopping-basket" aria-hidden="true" type="submit"></i></button>
+                                    </form>
+                                </td>
+                            </tr>
+                {% endfor %}
+                        </tbody>
+                </table>   
+                <hr>
+            </div>
+<!--pagination-->
+                <div class="pagination">
+                    <span class="step-links">
+                        {% if products.has_previous %}
+                            <a href="?page={{ products.previous_page_number }}" class="post-meta"><i class="fa fa-angle-left fa-lg" aria-hidden="true"></i></i></a>
+                        {% endif %}
+                    <span class="current">Page {{ products.number }} of {{ products.paginator.num_pages }}</span>
+                        {% if products.has_next %}
+                            <a href="?page={{ products.next_page_number }}" class="post-meta"><i class="fa fa-angle-right fa-lg" aria-hidden="true"></i></a>
+                        {% endif %}
+                    </span>
+                </div>     
+        </div><!--2-->
+</div><!--1-->
 
-
-
-    <!--<ol class="breadcrumb">
-        {% for crumb in crumbs %}
-            {% if forloop.last %}
-                <li class="active">{{ crumb.name }}</li>
-            {% else %}
-                <li><a href="{% url 'category' crumb.id %}">{{ crumb.name }}</a></li>
-            {% endif %}
-        {% endfor %}
-    </ol>-->          
-        
-    </div>
-        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 row productmenu">
-                
-            <table class="table table-striped">
-        <thead>
-        <tr>
-            <th></th>
-            <th>Description</th>
-            <th>Price</th>
-            <th>Cart</th>
-        </tr>
-        </thead>
-        <tbody>
-        {% for product in products %}
-            <tr>
-                <td><img class="product-image" src="{{ MEDIA_URL }}{{ product.image }}"></td>
-                
-                <td>{{ product.name }}</td>
-                
-                <td>{{ product.price }}</td>
-                <td>
-                    <form method="post" action="{% url 'add_to_cart' product.id %}">
-                        {% csrf_token %}
-                        Quantity
-
-                   <input name='quantity' type="number" min="1" max="999">
-                        <!--<button type="submit">Add</button>-->
-                        <button i class="fa fa-shopping-basket" aria-hidden="true" type="submit"></i></button>
-                    </form>
-                </td>
-            </tr>
-        {% endfor %}
-        </tbody>
-        
-    </table>   
-    <hr>
-    
-    <div class="pagination">
-    <span class="step-links">
-        {% if products.has_previous %}
-            <a href="?page={{ products.previous_page_number }}" class="post-meta"><i class="fa fa-angle-left fa-lg" aria-hidden="true"></i></i></a>
-        {% endif %}
-        <span class="current">
-            Page {{ products.number }} of {{ products.paginator.num_pages }}
-        </span>
-        {% if products.has_next %}
-            <a href="?page={{ products.next_page_number }}" class="post-meta"><i class="fa fa-angle-right fa-lg" aria-hidden="true"></i></a>
-        {% endif %}
-    </span>
-    </div>         
-        </div>
-</div>
-                         
-        
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    <!--<table class="table table-striped">
-        <thead>
-        <tr>
-            <th>Image</th>
-            <th>Name</th>
-            <th>Description</th>
-            <th>Price</th>
-            <th>Buy</th>
-            <th>Cart</th>
-        </tr>
-        </thead>
-        <tbody>
-        {% for product in products %}
-            <tr>
-                <td><img height="100" width="100" src="{{ MEDIA_URL }}{{ product.image }}"></td>
-                <td>{{ product.name }}</td>
-                <td>{{ product.description }}</td>
-                <td>{{ product.price }}</td>
-                <td><a href="{% url 'buy_now_stripe' product.id %}" )>Buy Now</a></td>
-                <td>
-                    <form method="post" action="{% url 'add_to_cart' product.id %}">
-                        {% csrf_token %}
-                        Quantity
-                        <input name='quantity' type="number" min="1" max="999">
-                        <!--<button type="submit">Add</button>
-                        <button i class="fa fa-shopping-basket" aria-hidden="true" type="submit"></i></button>
-                    </form>
-                </td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>-->
 {% endblock %}

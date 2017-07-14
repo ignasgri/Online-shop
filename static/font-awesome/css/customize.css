@@ -120,17 +120,6 @@ input:-webkit-autofill {
     margin:auto;
 }
 /*profile page*/
-.container-box{
-        max-width: 100%;
-    min-height: 600px;
-    margin: auto;
-    background-color: white;
-    -ms-filter: brightness(110%) hue-rotate(360deg) drop-shadow(0 0 5px #000000);
-    -webkit-filter: brightness(110%) hue-rotate(360deg) drop-shadow(0 0 5px #000000);
-    -moz-filter: brightness(110%) hue-rotate(360deg) drop-shadow(0 0 5px #000000);
-    -o-filter: brightness(110%) hue-rotate(360deg) drop-shadow(0 0 5px #000000);
-    filter: brightness(110%) hue-rotate(360deg) drop-shadow(0 0 5px #000000);
-}
 .img-circle {
     border-radius: 50%;
     margin-top: 20px;
@@ -144,7 +133,7 @@ input:-webkit-autofill {
 video{
     position: absolute;
     top: 0;
-    height: 705px;
+    height: 800px;
     background-size: cover;
     background-position: center center;
     background-attachment: fixed;
@@ -153,12 +142,17 @@ video{
     object-fit: fill;
     z-index: -1;
 }
-.deliv{
+.delivery-logo{
+    width: 100%;
+    top: 110px;
+    position: relative
+}
+/*.deliv{
     z-index: 1;
     top: -50px;
     position: relative;
 
-}
+}*/
 .profile-top{
         vertical-align: middle;
     background-color: #42adf4;
@@ -178,19 +172,17 @@ video{
     left: 30px;
     font-size: 12px;
 }
-
-
-
-
-
-
-
-
-
-
-
+.userForm input, select{
+    border: 1px solid gray;
+    height: 30px;
+    width: 300px;
+}
+.kidForm input, select{
+    border: 1px solid gray;
+    height: 30px;
+    width: 300px;
+}
 i.fa-stack-1x {
-    left: -3px;
     font-size: 11px;
     top: -0.8px;
 }
@@ -281,6 +273,7 @@ a.post-meta{
     padding: auto;
     padding-top: 40px;
     padding-left: -50px;
+    
 }
 .productmenu{
     padding: 0px 50px 0px 20px;
@@ -328,22 +321,13 @@ span.fa-stack.fa-lg{
     font-weight: bold;
     margin-top: 12px;
 }
-i.fa-stack-1x{
-    left: -2px;
-}
-/*li.cartnumber{
-    margin-left: 65px;
-    margin-top: 7px;
-    color: red;
-    position: absolute;
-}*/
 .additionalinformation{
     font-family: 'dosis';
     padding-bottom: 10px;
     padding-left: 30px;
     background-color: white;
-    bottom: 0;
     width: 100%;
+    position: absolute;
     margin: 0;
 }
 .stick-to-bottom{
@@ -379,6 +363,7 @@ i.fa-stack-1x{
 }
 .indexfooter{
     background-color: black;
+    margin-top: 165px;
 }
 .phone{
     /*width: 100%;*/
@@ -389,14 +374,9 @@ footer{
     width: 100%;
     bottom: 0;
     background-color: rgba(0,0,0,0.8);
-    position: absolute;
-    
+    position: relative;
+    display: inline-block;   
 }
-.delivery{
-    text-align: center;
-    padding-top:470px;
-    z-index: 1;
-    }
 .inline{
     margin-top: 20px;
     width: 100%;
@@ -424,7 +404,7 @@ footer{
     height: 200px;
     width:100%;
     background-color: rgba(0,0,0,0.5);
-    position: absolute;
+    position: relative;
     margin-top: 150px;
 }
 #search_button{
@@ -461,10 +441,6 @@ table.table.table-striped > tbody > tr{
     margin-left: 50px;
     margin-top: 50px;
 }
-.row{
-    /*margin: 0;*/
-    /*text-align: center;*/
-}
 .icon-bar{
     background-color: white;
 }
@@ -492,7 +468,6 @@ background-size: cover;
     z-index: -1;
   
 }
-
 .navbar {
     background-color: rgba(0,0,0,0.2);
     background-image: none;
@@ -520,9 +495,6 @@ a.blog{
 .cart{
     padding-right:20px;
 }
-.navbar-brand{
-    /*padding-left: 420px;*/
-}
 .navbar-brand:hover{
     padding-left: 60px;
     padding-top: 20px;
@@ -549,8 +521,7 @@ a.blog{
     width: 100%;
 }
 .card-details{
-    /*position: relative;*/
-        position: absolute;
+    position: absolute;
     height: 30%;
     text-align: center;
     width: 100%;
@@ -564,10 +535,6 @@ a.blog{
 label{
     display: none;
 }
-/*.form-group{
-    height: 20px;
-    width: 250px;
-}*/
 .form-control{
     width: 200px;
     height: 30px;
@@ -640,14 +607,16 @@ label{
     font-size: 10px!important;
 }
 .address-place{
-    display: block;
-    width: 100%;
+    display: inline-block;
     padding-left: 30px;
     margin: auto;
 }
+.stripepay{
+    text-align: right;
+}
 .add-button{
     height:20px;
-    width: 100%;
+    width: 70%;
     font-size: 10px;
     margin-top: 10px;
     border: 1px solid black; 
@@ -700,5 +669,51 @@ label{
 }
 .pay h3{
     padding-left: 130px;
+}}
+@media (max-width: 500px){
+.productwraper{
+    display: none;
 }
+.userForm input, select{
+    width: 200px;
 }
+.kidForm input, select{
+    width: 200px;
+}
+.paymentsPic {
+    display: none;
+}
+input.days, input.time{
+    width:100px;
+    margin-left: -30px;
+}
+.card{
+    width: 500px;
+    transform: rotate(90deg);
+    left: -90px;
+    top: 90px;
+}
+.card-details{
+    width: 150%;
+    transform: rotate(90deg);
+    left: -90px;
+    top: 80px;
+}
+input .name-field{
+    transform: rotate(90deg);
+    left: -160px;
+    top: 230px;
+}
+.delivery-logo{
+    display: none;
+}
+.video{
+    height: 760px;
+}
+.searchbar{
+    background-color: rgba(0,0,0,0);
+    margin-top: 25px;
+}
+.additionalinformation{
+    font-size: 10px;
+}}

@@ -10,6 +10,7 @@ from django.conf import settings
 import stripe
 from django.contrib.auth.models import User
 from .serializers import UserSerializer
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
 from rest_framework import viewsets
 from .serializers import CartItemSerializer
@@ -132,4 +133,3 @@ class CartItemViewSet(viewsets.ModelViewSet):
     queryset = CartItem.objects.all()
     serializer_class = CartItemSerializer
 
-    

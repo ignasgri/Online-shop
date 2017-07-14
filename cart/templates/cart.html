@@ -4,177 +4,128 @@
 
 {% block head_js %}
     <script src="https://js.stripe.com/v2/" type="text/javascript"></script>
-    <script type="text/javascript">
-        //<![CDATA[
-        Stripe.publishableKey = '{{ publishable }}';
-        //]]>
-    </script>
+        <script type="text/javascript">
+            //<![CDATA[
+            Stripe.publishableKey = '{{ publishable }}';
+            //]]>
+        </script>
     <script type="text/javascript" src="{% static 'js/stripe.js' %}"></script>
+
 {% endblock %}
 
 {% block content %}
+
 <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 row">
     <div class="productwraper">
-            <img class="paymentsPic"src="{% static "images/pay.png" %}" alt="cookies">
+        <img class="paymentsPic"src="{% static "images/pay.png" %}" alt="cookies">
     </div>
-
-<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 row address-place">
-    <h3>Pick your delivery data</h3>
-        <form>
-            
-  <input class="days" type="date" name="days" min="2017-07-10">
-  <input class="time" type="time" name="hours" min="00:00"><br>
-</form>
-
-    <h3>Enter your delivery address</h3>
-        <input class="address" type="checkbox" name="address" value="delivery_address">Use dafault shipping address
-
-<button class="btn" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
-    <i class="fa fa-plus-square-o" aria-hidden="true"></i> Add new shipping address
-  </button>
-</p>
-<div class="collapse" id="collapseExample">
-  <div class="card card-block">
-        <input class="address-box" placeholder="Address line 1" type="text"><input class="address-box" placeholder="Address line 2" type="text"><input class="address-box" placeholder="Address line 3" type="text">
-        <input class="address-box" placeholder="Area" type="text">
-        <input class="address-box" placeholder="Post code" type="text">
-        <button type="button" class="add-button">Add</button>
-     </div>
-</div>
-</div>
 </div>
 
-<div class="col-lg-8 col-md-8 col-sm-8 col-xs-8 ">
+<div class="col-lg-8 col-md-8 col-sm-8 col-xs-8 row">
     <table class="table table-striped">
         <thead>
-        <tr>
-            <th>Image</th>
-            <th>Name</th>
-            <th>Description</th>
-            <th>Price</th>
-            <th>Quantity</th>
-            <th>Action</th>
-        </tr>
+            <tr>
+                <th>Image</th>
+                <th>Name</th>
+                <th>Description</th>
+                <th>Price</th>
+                <th>Quantity</th>
+                <th>Action</th>
+            </tr>
         </thead>
         <tbody>
-        {% for item in items %}
-            <tr>
-                <td><img height="50" width="50" src="{{ MEDIA_URL }}{{ item.product.image }}"></td>
-                <td>{{ item.product.name }}</td>
-                <td>{{ item.product.description }}</td>
-                <td>{{ item.product.price }}</td>
-                <td>{{ item.quantity }}</td>
-                <td>
-                    <form method="post" action="{% url 'adjust_cart' item.id %}">
-                        {% csrf_token %}
-                        Quantity
-                        <input name='quantity' type="number" min="0" max="999">
-                        <button i class="fa fa-refresh" aria-hidden="true" type="submit" ></i></button>
-                        <!--<button type="submit">Adjust</button>-->
-                    </form>
-
-                </td>
-            </tr>
-        {% endfor %}
-        <tr>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td>{{ total }}</td>
-            <td></td>
-            <td></td>
-        </tr>
+            {% for item in items %}
+                <tr>
+                    <td><img height="50" width="50" src="{{ MEDIA_URL }}{{ item.product.image }}"></td>
+                    <td>{{ item.product.name }}</td>
+                    <td>{{ item.product.description }}</td>
+                    <td>{{ item.product.price }}</td>
+                    <td>{{ item.quantity }}</td>
+                    <td>
+                        <form method="post" action="{% url 'adjust_cart' item.id %}">
+                            {% csrf_token %}
+                            Quantity
+                            <input name='quantity' type="number" min="0" max="999">
+                            <button i class="fa fa-refresh" aria-hidden="true" type="submit" ></i></button>
+                            <!--<button type="submit">Adjust</button>-->
+                        </form>
+                    </td>
+                </tr>
+            {% endfor %}
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td>{{ total }}</td>
+                    <td></td>
+                    <td></td>
+                </tr>
         </tbody>
     </table>
 
-<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 row">
+
+<div class="row">
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+        <div class="row">
+            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 address-place">
+                <h3>Pick your delivery data</h3>
+                <form>
+                <input class="days" type="date" name="days" min="2017-07-10">
+                <input class="time" type="time" name="hours" min="00:00"><br>
+                </form>
+            </div>
+        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 address-place">
+                <h3>Enter your delivery address</h3>
+                    <input class="address" type="checkbox" name="address" value="delivery_address">Use dafault shipping address
+                    <button class="btn" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+                    <i class="fa fa-plus-square-o" aria-hidden="true"></i> Add new shipping address</button>
+        <div class="collapse" id="collapseExample">
+            <div class="card card-block">
+                <input class="address-box" placeholder="Address line 1" type="text"><input class="address-box" placeholder="Address line 2" type="text"><input class="address-box" placeholder="Address line 3" type="text">
+                <input class="address-box" placeholder="Area" type="text">
+                <input class="address-box" placeholder="Post code" type="text">
+                <button type="button" class="add-button">Add</button>
+            </div>
+        </div>
+        </div>
+        </div>
+    </div>
+</div>
+</div>
+
 <!-- Button trigger modal -->
-<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
-  Pay
-</button>
-
-
+<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 stripepay">
+    <img src="/static/images/stripe.png" width="200px" data-toggle="modal" data-target="#exampleModal">
+</div>
 
 
 <!-- Modal -->
 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content-3">
-    
-        <button type="button" class="close-card" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      
-      <div class="modal-body-3">
-
-
-
-<form role="form" method="post" id="payment-form" action="{% url 'cart' %}">
-        <div id="credit-card-errors" style="display:none">
-            <div class="alert-message block-message error" id="stripe-error-message"></div>
-        </div>
-        <img class="card" src="/static/images/visa.png">
+        <button type="button" class="close-card" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <div class="modal-body-3">
+                <form role="form" method="post" id="payment-form" action="{% url 'cart' %}">
+                    <div id="credit-card-errors" style="display:none">
+                        <div class="alert-message block-message error" id="stripe-error-message"></div>
+                    </div>
+                        <img class="card" src="/static/images/visa.png">
         
-        <div class="card-details">
-        {% csrf_token %}
-        {{ form | as_bootstrap }}
+                    <div class="card-details">
+                        {% csrf_token %}
+                        {{ form | as_bootstrap }}
+                    </div>
+                        <input class="name-filed" type="text" placeholder="NAME IN CAPITAL LETTERS">
+                    <div class="form-group">
+                        <input class="btn btn-success button" id="submit_payment_btn" name="commit" type="submit" value="Confirm payment">
+                        <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel Order</button>
+                    </div>
+                </form>
+            </div>
         </div>
-        <input class="name-filed" type="text" placeholder="NAME IN CAPITAL LETTERS">
-        <div class="form-group">
-            <input class="btn btn-success button" id="submit_payment_btn" name="commit" type="submit" value="Confirm payment">
-            <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel Order</button>
-        </div>
-    </form>
-</div>
-
-
-
-      </div>
     </div>
-  </div>
 </div>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-    <!--<button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
-    <i class="fa fa-credit-card-alt" aria-hidden="true"></i> Ready to pay?
-  </button>
-</p>
-<div class="collapse" id="collapseExample">
-  <div class="card card-block">
-
-
-<form role="form" method="post" id="payment-form" action="{% url 'cart' %}">
-        <div id="credit-card-errors" style="display:none">
-            <div class="alert-message block-message error" id="stripe-error-message"></div>
-        </div>
-
-        <legend>Pay Now!</legend>
-        <
-        <img src="/static/images/visa.png">
-        {% csrf_token %}
-        {{ form | as_bootstrap }}
-        
-        <div class="form-group">
-            <input class="btn btn-primary" id="submit_payment_btn" name="commit" type="submit" value="Submit Payment">
-        </div>
-    </form>
-
-
-
-  </div>
-</div>-->
     
 
 {% endblock %}

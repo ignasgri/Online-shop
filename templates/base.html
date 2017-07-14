@@ -5,7 +5,6 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    
     <meta charset="utf-8">
     <title>Online Shop</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -15,100 +14,71 @@
     <style type="text/css">@font-face {font-family: "CREDC";src:url('{% static 'font-awesome/fonts/CREDC.ttf' %}');}</style>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link rel="stylesheet" href="{% static 'font-awesome/css/balloon.css' %}">
-    
-    
     <link rel="stylesheet" href="{% static 'font-awesome/css/font-awesome.min.css' %}">
     <link rel="stylesheet" href="{% static 'font-awesome/fonts/CREDC.ttf' %}">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0-alpha1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-alpha/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="{% static 'font-awesome/css/customize.css' %}">
     <link rel="shortcut icon" href="{% static 'images/favicon.png' %}"/>
-    
     {% block head_js %}{% endblock %}
 </head>
 <body>
     <nav class="navbar">
-  <div class="container-fluid">
-    <!-- Brand and toggle get grouped for better mobile display -->
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
       <!--<a class="navbar-brand" href="#"><span><img src="{% static "images/logo4.png" %}" alt="delivery1" width="100px"></span></a>-->
-    </div>
-
-    <!-- Collect the nav links, forms, and other content for toggling -->
-    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-      <ul class="nav navbar-nav navbar-left">
-        <li class="active"><a href="/">HOME <span class="sr-only">(current)</span></a></li>
-        <li><a href="{% url 'products' %}">PRODUCTS</a></li>
-        <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">CATEGORIES <i class="fa fa-chevron-down" aria-hidden="true"></i></a>
-          
+        </div>
+      <!-- Collect the nav links, forms, and other content for toggling -->
+      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+        <ul class="nav navbar-nav navbar-left">
+                <li class="active"><a href="/">HOME <span class="sr-only">(current)</span></a></li>
+                <li><a href="{% url 'products' %}">PRODUCTS</a></li>
+                <li class="dropdown">
+                  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">CATEGORIES <i class="fa fa-chevron-down" aria-hidden="true"></i></a>
           <ul class="dropdown-menu">
-            <li><a href="{% url 'categories' %}">All products</a></li>
-            <li>{% for category in root_categories %}
-            <li class="category-name"><a href="{% url 'category' category.id %}">{{ category.name }}</a></li>
-            {% endfor %}</li>
-            <!--<li role="separator" class="divider"></li>
-            <li><a href="#">One more separated link</a></li>-->
+              <li><a href="{% url 'categories' %}">All products</a></li>
+              <li>{% for category in root_categories %}
+                <li class="category-name"><a href="{% url 'category' category.id %}">{{ category.name }}</a></li>
+                  {% endfor %}
+              </li>
           </ul>
-          <li><a class="blog"href="#">BLOG</a></li>
-
-          </ul>
-        </li>
-        <ul class="nav navbar-nav navbar-right">
-             {% if user.is_authenticated %}
-                <li class="righticons"  data-balloon="You are logged in as {{ user.first_name }} {{ user.last_name }}" data-balloon-pos="down"><a href="{% url 'profile' %}"><i class="fa fa-user-circle-o" aria-hidden="true"></i> Profile</a></li>
-                <li class="righticons"><a href="{% url 'logout' %}"><i class="fa fa-sign-out"></i> Log Out</a></li>
-            {%  else %}
-            <button type="button" class="righticons" data-toggle="modal" data-target="#modalLogin"><i class="fa fa-plus" aria-hidden="true"></i> Login
-</button>
-        <!--<li class="righticons"><a href="{% url 'login' %}"><i class="fa fa-lock" aria-hidden="true"></i> Login</a></li>-->
-        {% endif %}
-        <!-- Button trigger modal -->
-        <button type="button" class="righticons" data-toggle="modal" data-target="#modalRegister"><i class="fa fa-plus" aria-hidden="true"></i> SignUp
-</button>
-      <ul class="nav navbar-nav navbar-right cart">
-      {% if user.is_authenticated %}
-        <li><a a href="{% url 'cart' %}"><i class="fa fa-shopping-cart"></i> CART</a></li>
-      {% else %}
-            <button type="button" class="righticons" data-toggle="modal" data-target="#modalLogin"><i class="fa fa-shopping-cart" aria-hidden="true"></i> Cart
-      {% endif %}
-
-        {% if num_cart_items > 0 %}
-                 <!--<li class="cartnumber"><i class="fa fa-circle-thin fa-2x" aria-hidden="true"></i>{{ num_cart_items }}</li>-->
-                 <span class="fa-stack fa-lg">
-  <i class="fa-stack-1x">{{num_cart_items}}</i>
-  <i class="fa fa-circle-o fa-2x" color="#820f0f;"></i>
-</span>
-            {% endif%}
-      </ul>
-         <!--<div class="container">
-    <h1>Open NOW!</h1>
-   <div class="masthead">
-       <ul class="nav nav-pills pull-right">
-            <li><a href="/"><i class="fa fa-home"></i> Home</a></li>
-            <li><a href="{% url 'products' %}"><i class="fa fa-cube"></i> All Products</a></li>
-            <li><a href="{% url 'categories' %}"><i class="fa fa-cube"></i> Products by category</a></li>
-            {% if user.is_authenticated %}
-                <li><a href="{% url 'profile' %}"><i class="fa fa-user"></i> Profile</a></li>
-                <li><a href="{% url 'logout' %}"><i class="fa fa-sign-out"></i> Log Out</a></li>
-            {%  else %}
-                <li><a href="{% url 'register' %}"><i class="fa fa-user-plus"></i> Register</a></li>
-                <li><a href="{% url 'login' %}"><i class="fa fa-sign-in"></i> Log In</a></li>
-            {% endif %}
-            <li><a href="{% url 'cart' %}"><i class="fa fa-shopping-cart"></i> Cart</a></li>
-            
-            {% if num_cart_items > 0 %}
-                 <li>{{ num_cart_items }}</li>
-            {% endif%}-->  
-    </div><!-- /.navbar-collapse -->
-  </div><!-- /.container-fluid -->
-</nav>
+              <li><a class="blog"href="#">BLOG</a>
+              </li>
+        </ul>
+            </li>
+        <div class="nav navbar-nav navbar-right">
+                {% if user.is_authenticated %}
+                    <li class="righticons"  data-balloon="You are logged in as {{ user.first_name }} {{ user.last_name }}" data-balloon-pos="down"><a href="{% url 'profile' %}"><i class="fa fa-user-circle-o" aria-hidden="true"></i> Profile</a></li>
+                    <li class="righticons"><a href="{% url 'logout' %}"><i class="fa fa-sign-out"></i> Log Out</a></li>
+                {%  else %}
+                    <button type="button" class="righticons" data-toggle="modal" data-target="#modalLogin"><i class="fa fa-plus" aria-hidden="true"></i> Login</button>
+                {% endif %}
+            <!-- Button trigger modal -->
+                    <button type="button" class="righticons" data-toggle="modal" data-target="#modalRegister"><i class="fa fa-plus" aria-hidden="true"></i> SignUp</button>
+          <div class="nav navbar-nav navbar-right cart">
+                {% if user.is_authenticated %}
+                    <li><a a href="{% url 'cart' %}"><i class="fa fa-shopping-cart"></i> CART</a></li>
+                {% else %}
+                    <button type="button" class="righticons" data-toggle="modal" data-target="#modalLogin"><i class="fa fa-shopping-cart" aria-hidden="true"></i> Cart
+                {% endif %}
+                {% if num_cart_items > 0 %}
+                    <!--<li class="cartnumber"><i class="fa fa-circle-thin fa-2x" aria-hidden="true"></i>{{ num_cart_items }}</li>-->
+                    <span class="fa-stack fa-lg">
+                    <i class="fa-stack-1x">{{num_cart_items}}</i>
+                    <i class="fa fa-circle-o fa-2x" color="#820f0f;"></i>
+                    </span>
+                {% endif%}
+          </div>
+        </div>  
+      </div><!-- /.navbar-collapse -->
+    </div><!-- /.container-fluid -->
+  </nav>
 
 
 
@@ -144,95 +114,75 @@
     </div>
   </div>
 </div>
+
+
 <!-- Log in Modal -->
 <div class="modal fade" id="modalLogin" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
   <div class="modal-dialog" role="document">
     <div class="modal-content loginsize">
-      
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="myModalLabel">Login</h4>
-      
-      <div class="modal-body">
-
-
-<form method="post" action="{% url 'login' %}">
-    {% csrf_token %}
-  
-      <i class="fa fa-user fa-2x" style="color:white" aria-hidden="true"></i>
-      <input type="text" class="textfield" name="username_or_email" >
-   
-      <i class="fa fa-lock fa-2x" style="color:white" aria-hidden="true" ></i>
-      <input type="password" class="textfield" name="password">
-      
-  <button type="submit" class="btn btn-success buttonlg" >Login</button>
-  <!--<button type="submit" class="btn btn-danger buttonrs">Reset</button>-->
-</form>
-
-
-      
-      <div class="footer">
-        <button type="submit" class="btn btn-danger buttonrs" data-toggle="collapse" data-target="#resetfield"><i class="fa fa-key fa-rotate-90" aria-hidden="true"></i> Reset</button>
-  <div id="resetfield" class="collapse">
-    
-
-    <form method="post" action="{% url 'password_reset' %}">
-    {% csrf_token %}
-    
-      <i class="fa fa-cogs fa-2x reset-user" style="color:white" aria-hidden="true"></i>
-      <input type="email" class="textfield reset-field" name="id_email" >
-  <button type="submit" name="password_reset" class="btn btn-warning buttonwr"><i class="fa fa-exclamation-triangle" aria-hidden="true"></i> Reset confirmation</button>
-  <!--<button type="submit" class="btn btn-danger buttonrs">Reset</button>-->
-</form>
-</div>
-  </div>
-  </form>
-      </div>
-        
+          <h4 class="modal-title" id="myModalLabel">Login</h4>
+            <div class="modal-body">
+              <form method="post" action="{% url 'login' %}">
+                  {% csrf_token %}
+                    <i class="fa fa-user fa-2x" style="color:white" aria-hidden="true"></i>
+                    <input type="text" class="textfield" name="username_or_email" >
+                    <i class="fa fa-lock fa-2x" style="color:white" aria-hidden="true" ></i>
+                    <input type="password" class="textfield" name="password">
+                    <button type="submit" class="btn btn-success buttonlg" >Login</button>
+              </form>
+                  <div class="footer">
+                      <button type="submit" class="btn btn-danger buttonrs" data-toggle="collapse" data-target="#resetfield"><i class="fa fa-key fa-rotate-90" aria-hidden="true"></i> Reset</button>
+                      <div id="resetfield" class="collapse">
+                      <form method="post" action="{% url 'password_reset' %}">
+                    {% csrf_token %}
+                          <i class="fa fa-cogs fa-2x reset-user" style="color:white" aria-hidden="true"></i>
+                          <input type="email" class="textfield reset-field" name="id_email" >
+                          <button type="submit" name="password_reset" class="btn btn-warning buttonwr"><i class="fa fa-exclamation-triangle" aria-hidden="true"></i> Reset confirmation</button>
+              </form>
+                      </div>
+                  </div>
+            </div>
         </div>
-      </div>
     </div>
-  </div>
 </div>
+
 {%block content%}
 
 {%endblock content%}
 
 <footer>
     <div class="row additionalinformation">
-        <div class="col-lg-3 col-md-3 col-sm-2 col-xs-6">
+        <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
             <h4>About us</h4>
                 History
                 <br>Out Team
                 <br>Kitchen
                 <br>Quality
         </div>
-        <div class="col-lg-4 col-md-3 col-sm-3 col-xs-6">
+        <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
             <h4>How it works?</h4>
                     Orders
                     <br>Payments
                     <br>Delivery
                     <br>Returns            
         </div>
-        <div class="col-lg-5 col-md-6 col-sm-6 col-xs-12">
-            <div class="row">
-                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+        <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
             <h4>Our Address</h4>
                 Address: 18 Meriadina Court
                 <br>Spindrift Avenue
                 <br>Roayal Canal Park
                 <br>Dublin 15, Ireland
-                </div>
-                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+        </div>
+        <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
             <h4>Contact details</h4>
                 Mobile 087 74 333 88
                 <br>Phone Number: 01 88 8888
                 <br>Web: www.daddycook.com
                 <br>Email: daddycook@goodfood.com
-            <div>
         </div>
     </div>
 </footer>
 <script rel="stylesheet" href="{% static 'js/customize.js' %}"></script>
-
 </body>
 </html>
