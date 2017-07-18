@@ -2,21 +2,19 @@
 {% load gravatar %}
 {% block content %}
 
-<div class="row">
-    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+
         <div class="row">
             <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 profile-top">
                 <img src="{% gravatar_url user.email 150 %}" style="width:150px; height: 150px; background-color: #12ABB2; color: #ffffff;" class="img-circle">
             </div>
-            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
-                <h1>Hello {{ user.first_name }}</h1>
+            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 greating-message">
+                <p>Hello {{ user.first_name }}</p>
             </div>
         </div>
-    </div>
-</div>
+
 <div class="row">
     <div class="col-sm-offset-1 col-sm-6 col-md-offset-1 col-md-6 col-lg-offset-1 col-lg-6 row userForm">
-        <table>
+        <table class="personalInfoProfile">
             <h1>Personail details</h1>
                 <form class="" action="/" method="get">
                     <tr>
@@ -33,59 +31,89 @@
                     </tr>
                     <tr>
                         <td>Address:</td>
-                        <td><input type="text" placeholder="Address" name="addres1"></td>
+                        <td><input type="text" placeholder="{{ user.profile.address1 }}" name="addres1"></td>
                     </tr>
                     <tr>
                         <td>Address:</td>
-                        <td><input type="text" placeholder="Address" name="address2"></td>
+                        <td><input type="text" placeholder="{{ user.profile.address2 }}" name="address2"></td>
                     </tr>
                     <tr>
                         <td>Post Code:</td>
-                        <td><input type="text" placeholder="Post code" name="post code"></td>
+                        <td><input type="text" placeholder="{{ user.profile.postcode }}" name="post code"></td>
+                    </tr>
+                    <tr>
+                        <td>Phone no:</td>
+                        <td><input type="text" placeholder="{{ user.profile.phone }}" name="phone no"></td>
                     </tr>
                     <tr>
                         <td>Date of Birth:</td>
-                        <td><input type="date" placeholder="Date of birth" name="dob"></td>
+                        <td><input type="text" placeholder="{{ user.profile.dob }}" name="dob"></td>
                     </tr>
                     <tr>
                         <td>Gender:</td>
-                        <td><select>
-                        <option value="Male">Male</option>
-                        <option value="Female">Female</option>
-                        </select>
+                        <td><input type="text" placeholder="{{ user.profile.gender }}" name="gender">
                         </td>
                     </tr>
                     <tr>
-                        <td><button class="btn btn-success" type="submit">Update</button></td>
+                    <br>
+                        <td><button class="btn btn-success" type="submit">Update</button>
+                        <button type="button" class="btn btn-warning btn-lg" data-toggle="modal" data-target="#kiddy">Add Kid</button>
+                        <!--<button class="btn btn-warning" type="submit">Add kid</button></td>-->
                     </tr>
                 </form>
         </table>
     </div>
+
+                <h1>Kids</h1>
+{% for kid in kids %}
         <div class="col-lg-4-offest-1 col-md-4-offest-1 col-sm-4-offest-1 col-xs-4 kidForm">
-            <table>
-                <h1>"Kids name here"<br> information</h1>
+            
+        </div>
+
+
+
+        <div class="modal fade" id="kiddy" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Modal Header</h4>
+        </div>
+        <div class="modal-body">
+          <table>
                     <form class="form" action="">
                         <tr>
                             <td>First name:</td>
-                            <td><input type="text" placeholder="" name="fname"></td>
+                            <td><input type="text" placeholder="{{ kid.name }}" name="fname"></td>
                         </tr>
                         <tr>
                             <td>Date of Birth:</td>
-                            <td><input type="date" placeholder="Date of birth" name="dob"></td>
+                            <td><input type="text" placeholder="{{ kid.dob }}" name="dob"></td>
                         </tr>
                         <tr>
                             <td>Gender:</td>
-                            <td><select>
-                            <option value="Male">Male</option>
-                            <option value="Female">Female</option>
-                            </select></td>
+                            <td><input type="text" placeholder="{{ kid.gender }}" name="gender"></td>
                         </tr>
                         <tr>
-                            <td><button class="btn btn-success" type="submit">Edit</button></td>
+                            <td>
+                            <button class="btn btn-success" type="submit">Add</button>
+                            <button class="btn btn-warning" type="submit">Edit</button>
+                            <button class="btn btn-danger" type="submit">Delete</button></td>
                         </tr>
                     </form>
             </table>
         </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+
+{% endfor %}
 </div> 
     
  

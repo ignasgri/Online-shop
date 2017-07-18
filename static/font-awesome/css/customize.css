@@ -154,15 +154,13 @@ video{
 
 }*/
 .profile-top{
-        vertical-align: middle;
-    background-color: #42adf4;
+    vertical-align: middle;
     color: white;
     text-align: center;
     font-family: 'Cousine';
     height: 200px;
     display: flex;
-    align-items: center;
-    padding-left: 30%;
+    padding-left: 38%;
 }
 .userForm{
     left: 30px;
@@ -172,15 +170,44 @@ video{
     left: 30px;
     font-size: 12px;
 }
-.userForm input, select{
-    border: 1px solid gray;
+.userForm input{
+    /*border: 1px solid gray;*/
     height: 30px;
     width: 300px;
+    border: none;
+}
+.userForm select{
+    /*border: 1px solid gray;*/
+    height: 30px;
+    border: none;
+    width: 80px;
+}
+.kidForm input{
+    border: none;
+    height: 30px;
+    width: 200px;
+}
+.kidForm select{
+    /*border: 1px solid gray;*/
+    height: 30px;
+    border: none;
+    width: 80px;
+}
+.greating-message{
+    margin-top: 70px;
+    font-size: 40px;
+}
+.personalInfoProfile td{
+    font-family: 'Roboto Mono'
+}
+.personalInfoProfile input, select{
+    margin-left: 20px;
+}
+.kidForm td{
+    font-family: 'Roboto Mono'
 }
 .kidForm input, select{
-    border: 1px solid gray;
-    height: 30px;
-    width: 300px;
+    margin-left: 20px;
 }
 i.fa-stack-1x {
     font-size: 11px;
@@ -192,9 +219,17 @@ i.fa-stack-1x {
     position: absolute;
 }
 .imageprices{
-    width: 200px;
-    padding:0px;
+        width: 200px;
+    padding: 0px;
     display: inline-block;
+    margin-top: 5px;
+    background-color: #efefef;
+    height: 300px;
+}
+.addItem{
+    width: 200px;
+    height: 30px;
+    margin-top: 52px;
 }
 .closed{
     width:100%;
@@ -388,6 +423,9 @@ footer{
     font-size: 60px;
     padding-bottom: 20px;
     color: white;
+}
+h6{
+    font-size: 9px;
 }
 .search-form-control{
     vertical-align: middle;
@@ -636,6 +674,51 @@ label{
 @keyframes slide {
     100% { left: 0; }
 }
+
+
+
+
+.container {
+  width: 1000px;
+  position: relative;
+}
+
+.header {
+  clear: both;
+  margin-bottom: 10px;
+  
+  height: 90px;
+}
+
+.sidebar {
+  float: left;
+  width: 350px;
+  
+}
+
+.content {
+  float: right;
+  width: 640px;
+  
+  height: 800px;
+}
+
+.footer {
+  clear: both;
+  margin-top: 10px;
+  
+  height: 600px;
+}
+
+
+
+
+
+
+
+
+
+
 @media (max-width: 1200px){
 .phone {
     width: 400px;

@@ -4,11 +4,13 @@ from django.core.urlresolvers import reverse
 from django.shortcuts import render, redirect, HttpResponseRedirect
 from django.template.context_processors import csrf
 from django.contrib.auth.decorators import login_required
-
+from .models import KidProfile, UserProfile
 
 @login_required(login_url='/accounts/login')
 def profile(request):
-    return render(request, 'profile.html')
+    kids = KidProfile.objects.filter(parent=request.user)
+    adults = UserProfile.objects.filter(user=request.user)
+    return render(request, 'profile.html', {'kids': kids}, {'adults': adults})
 
 
 def login(request):

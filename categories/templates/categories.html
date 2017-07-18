@@ -22,9 +22,14 @@
         {% for product in products %}
             <div class="imageprices">
                 <img height="200" width="200" src="{{ MEDIA_URL }}{{ product.image }}">
-                    <form class="plus" method="post" action="{% url 'add_plus' product.id %}">
+                
+                <h6>{{ product.name }}</h6>
+                <h6>€{{ product.price }}</h6>
+                <form class="plus" method="post" action="{% url 'add_plus' product.id %}">
+                <button class="but btn-danger addItem" type="submit">Add to cart</button>
+                    
         {% csrf_token %}
-                        <button type="submit" data-balloon='{{ product.name }} €{{ product.price }}' data-balloon-pos="right"><i class="fa fa-plus fa-2x" aria-hidden="true"></i></button>
+                        <!--<button type="submit" data-balloon='{{ product.name }} €{{ product.price }}' data-balloon-pos="right"><i class="fa fa-plus fa-2x" aria-hidden="true"></i></button>-->
                     </form>
             </div>
         {% endfor %}

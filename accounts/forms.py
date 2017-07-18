@@ -3,13 +3,34 @@ from django.contrib.auth.forms import UserCreationForm
 from django.core.exceptions import ValidationError
 from django.contrib.auth.models import User
 
-
+from .models import KidProfile
 
 
 class UserLoginForm(forms.Form):
     username_or_email = forms.CharField()
     password = forms.CharField(widget=forms.PasswordInput)
     
+
+
+class FullUserDetailsForm(forms.Form):
+    first_name = forms.CharField(max_length=None)
+    last_name = forms.CharField(max_length=None)
+    email = forms.CharField(max_length=None)
+    address1 = forms.CharField(max_length=255)
+    address2 = forms.CharField(max_length=255)
+    postcode = forms.CharField(max_length=7)
+    phone = forms.CharField(max_length=10)
+    dob = forms.DateField()
+    gender = forms.CharField(max_length=1)
+    
+    # finish this
+
+class KidProfileForm(forms.ModelForm):
+    class Meta:
+        model=KidProfile
+        fields = ['name', 'dob', 'gender']
+        # Finish this
+
 
 
 class UserRegistrationForm(UserCreationForm):
