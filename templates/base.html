@@ -11,7 +11,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <link href="https://fonts.googleapis.com/css?family=Cousine|Permanent+Marker|Roboto+Mono|Dosis" rel="stylesheet">
-    <style type="text/css">@font-face {font-family: "CREDC";src:url('{% static 'font-awesome/fonts/CREDC.ttf' %}');}</style>
+    <style type="text/css">@font-face {font-family: "CREDC"; src:url('{% static 'font-awesome/fonts/CREDC.ttf' %}');}</style>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link rel="stylesheet" href="{% static 'font-awesome/css/balloon.css' %}">
     <link rel="stylesheet" href="{% static 'font-awesome/css/font-awesome.min.css' %}">
@@ -48,9 +48,7 @@
                   {% endfor %}
               </li>
           </ul>
-              <li><a class="blog"href="#">BLOG</a>
-              </li>
-        </ul>
+            </ul>
             </li>
         <div class="nav navbar-nav navbar-right">
                 {% if user.is_authenticated %}
@@ -58,12 +56,13 @@
                     <li class="righticons"><a href="{% url 'logout' %}"><i class="fa fa-sign-out"></i> Log Out</a></li>
                 {%  else %}
                     <button type="button" class="righticons" data-toggle="modal" data-target="#modalLogin"><i class="fa fa-plus" aria-hidden="true"></i> Login</button>
-                {% endif %}
+                
             <!-- Button trigger modal -->
                     <button type="button" class="righticons" data-toggle="modal" data-target="#modalRegister"><i class="fa fa-plus" aria-hidden="true"></i> SignUp</button>
+          {% endif %}
           <div class="nav navbar-nav navbar-right cart">
                 {% if user.is_authenticated %}
-                    <li><a a href="{% url 'cart' %}"><i class="fa fa-shopping-cart"></i> CART</a></li>
+                    <li data-balloon="Total €{{ total }}" data-balloon-pos="down"><a a href="{% url 'cart' %}"><i class="fa fa-shopping-cart"></i> Cart</a></li>
                 {% else %}
                     <button type="button" class="righticons" data-toggle="modal" data-target="#modalLogin"><i class="fa fa-shopping-cart" aria-hidden="true"></i> Cart
                 {% endif %}
@@ -80,6 +79,15 @@
     </div><!-- /.container-fluid -->
   </nav>
 
+{% if messages %}
+    <div class="alert alert-success">
+        <div class="messages">
+            {% for message in messages %}
+                {{ message }}
+            {% endfor %}
+        </div>
+    </div>
+{% endif %}
 
 
 <!-- Register Modal -->
@@ -91,12 +99,15 @@
         <h4 class="modal-title" id="myModalLabel">Registration</h4>
 
       <div class="modal-body">
-        <form method="post" action="/">
-    {% csrf_token %}
+        <form method="post" action="{% url 'register' %}">
+                  {% csrf_token %}
   
       <i class="fa fa-user fa-2x" style="color:white" aria-hidden="true"></i>
-      <input type="text" class="textfield" placeholder="User name or email" name="username_or_email" >
-   
+      <input type="text" class="textfield" placeholder="User name" name="username" >
+      
+      <i class="fa fa-envelope-o fa-2x" style="color:white" aria-hidden="true" ></i>
+      <input type="email" class="textfield" placeholder="Email" name="email">
+
       <i class="fa fa-lock fa-2x" style="color:white" aria-hidden="true" ></i>
       <input type="password" class="textfield" placeholder="Your password" name="password1">
       
@@ -106,7 +117,7 @@
       
       <input type="password" class="textfield" placeholder="Reapeat your password" name="password2">
 
-  <button type="submit" class="btn btn-success buttonlg" ><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Quick Register</button>
+  <button type="submit" class="btn btn-success buttonreg" ><i class="fa fa-pencil-square-o" aria-hidden="true"></i>Register</button>
   <!--<button type="submit" class="btn btn-danger buttonrs"><i class="fa fa-link" aria-hidden="true"></i> Full Registration Form</button>-->
 </form>
       </div>
@@ -135,9 +146,9 @@
                       <div id="resetfield" class="collapse">
                       <form method="post" action="{% url 'password_reset' %}">
                     {% csrf_token %}
-                          <i class="fa fa-cogs fa-2x reset-user" style="color:white" aria-hidden="true"></i>
-                          <input type="email" class="textfield reset-field" name="id_email" >
-                          <button type="submit" name="password_reset" class="btn btn-warning buttonwr"><i class="fa fa-exclamation-triangle" aria-hidden="true"></i> Reset confirmation</button>
+                        <i class="fa fa-cogs fa-2x reset-user" style="color:white" aria-hidden="true"></i>
+                        <input type="email" class="textfield reset-field" name="email" name="csrfmiddlewaretoken">
+                        <button type="submit" name="password_reset" class="btn btn-warning buttonwr"><i class="fa fa-exclamation-triangle" aria-hidden="true"></i> Reset confirmation</button>
               </form>
                       </div>
                   </div>

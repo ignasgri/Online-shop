@@ -3,118 +3,173 @@
 {% block content %}
 
 
-        <div class="row">
-            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 profile-top">
-                <img src="{% gravatar_url user.email 150 %}" style="width:150px; height: 150px; background-color: #12ABB2; color: #ffffff;" class="img-circle">
-            </div>
-            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 greating-message">
-                <p>Hello {{ user.first_name }}</p>
-            </div>
-        </div>
-
-<div class="row">
-    <div class="col-sm-offset-1 col-sm-6 col-md-offset-1 col-md-6 col-lg-offset-1 col-lg-6 row userForm">
-        <table class="personalInfoProfile">
-            <h1>Personail details</h1>
-                <form class="" action="/" method="get">
+<div class="modal fade" id="kiddy" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title" id="myModalLabel">Registration</h4>
+            <div class="modal-body">
+                <form action="{% url 'create_profile_kid' %}" method="post">
+                {% csrf_token %}
                     <tr>
-                        <td>First name*:</td> 
-                        <td><input type="text" placeholder="{{ user.first_name }}" name="fname"></td>
-                    </tr>
-                    <tr>
-                        <td>Last name*:</td> 
-                        <td><input type="text" placeholder="{{ user.last_name }}" name="lname"></td>
-                    </tr>
-                    <tr>
-                        <td>Email*:</td>
-                        <td><input type="email" placeholder="{{ user.email }}" name="email"></td>
-                    </tr>
-                    <tr>
-                        <td>Address:</td>
-                        <td><input type="text" placeholder="{{ user.profile.address1 }}" name="addres1"></td>
-                    </tr>
-                    <tr>
-                        <td>Address:</td>
-                        <td><input type="text" placeholder="{{ user.profile.address2 }}" name="address2"></td>
-                    </tr>
-                    <tr>
-                        <td>Post Code:</td>
-                        <td><input type="text" placeholder="{{ user.profile.postcode }}" name="post code"></td>
-                    </tr>
-                    <tr>
-                        <td>Phone no:</td>
-                        <td><input type="text" placeholder="{{ user.profile.phone }}" name="phone no"></td>
+                        <td>First name:</td>
+                        <td><input type="text" value="{{ kid.name }}" name="name"></td>
                     </tr>
                     <tr>
                         <td>Date of Birth:</td>
-                        <td><input type="text" placeholder="{{ user.profile.dob }}" name="dob"></td>
+                        <td><input type="date" value="{{ kid.dob }}" name="dob"></td>
                     </tr>
                     <tr>
                         <td>Gender:</td>
-                        <td><input type="text" placeholder="{{ user.profile.gender }}" name="gender">
-                        </td>
+                        <td><input type="text" maxlength="1" value="{{ kid.gender }}" name="gender"></td>
                     </tr>
                     <tr>
-                    <br>
-                        <td><button class="btn btn-success" type="submit">Update</button>
-                        <button type="button" class="btn btn-warning btn-lg" data-toggle="modal" data-target="#kiddy">Add Kid</button>
-                        <!--<button class="btn btn-warning" type="submit">Add kid</button></td>-->
+                        <td>
+                        <button class="btn btn-success" type="submit">Add</button>
+                        </td>
                     </tr>
                 </form>
-        </table>
+            </div>
+        </div>
     </div>
+</div>
 
-                <h1>Kids</h1>
-{% for kid in kids %}
-        <div class="col-lg-4-offest-1 col-md-4-offest-1 col-sm-4-offest-1 col-xs-4 kidForm">
-            
+
+<aside>
+    <div class="row">
+        <div class="col-lg-5 col-md-5 col-sm-5 col-xs-5 profile-top"> 
+            <img class="profileImage"src="{% gravatar_url user.email %}">
         </div>
+        {% comment %}<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 greating-message">
+            <p>Hello {{ user.first_name }}</p>
+        </div>{% endcomment %}
+ 
 
 
-
-        <div class="modal fade" id="kiddy" role="dialog">
-    <div class="modal-dialog">
-    
-      <!-- Modal content-->
-      <div class="modal-content">
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal">&times;</button>
-          <h4 class="modal-title">Modal Header</h4>
-        </div>
-        <div class="modal-body">
-          <table>
-                    <form class="form" action="">
+        <div class="col-sm-7 col-md-7 col-lg-7 userForm">
+            <table class="personalInfoProfile">
+                <h1>Personail details</h1>
+                    <form class="" action="{% url 'update_profile' %}" method="post">
+                        {% csrf_token %}
                         <tr>
-                            <td>First name:</td>
-                            <td><input type="text" placeholder="{{ kid.name }}" name="fname"></td>
+                            <td>First name*:</td> 
+                            <td><input type="text" value="{{ user.first_name }}" name="first_name"></td>
+                        </tr>
+                        <tr>
+                            <td>Last name*:</td> 
+                            <td><input type="text" value="{{ user.last_name }}" name="last_name"></td>
+                        </tr>
+                        <tr>
+                            <td>Email*:</td>
+                            <td><input type="email" value="{{ user.email }}" name="email"></td>
+                        </tr>
+                        <tr>
+                            <td>Address:</td>
+                            <td><input type="text" value="{{ user.profile.address1 }}" name="address1"></td>
+                        </tr>
+                        <tr>
+                            <td>Address:</td>
+                            <td><input type="text" value="{{ user.profile.address2 }}" name="address2"></td>
+                        </tr>
+                        <tr>
+                            <td>Post Code:</td>
+                            <td><input type="text" value="{{ user.profile.postcode }}" name="postcode"></td>
+                        </tr>
+                        <tr>
+                            <td>Phone no:</td>
+                            <td><input type="text" value="{{ user.profile.phone }}" name="phone"></td>
                         </tr>
                         <tr>
                             <td>Date of Birth:</td>
-                            <td><input type="text" placeholder="{{ kid.dob }}" name="dob"></td>
+                            <td><input type="date" value="{{ user.profile.dob }}" name="dob"></td>
                         </tr>
                         <tr>
                             <td>Gender:</td>
-                            <td><input type="text" placeholder="{{ kid.gender }}" name="gender"></td>
+                            <td><input type="text" maxlength="1" value="{{ user.profile.gender }}" name="gender">
+                            </td>
                         </tr>
                         <tr>
-                            <td>
-                            <button class="btn btn-success" type="submit">Add</button>
-                            <button class="btn btn-warning" type="submit">Edit</button>
-                            <button class="btn btn-danger" type="submit">Delete</button></td>
+                        <br>
+                            <td></td>
+                            <td><button class="btn buttonUpdate" type="submit">Update</button>
+                            <button type="button" class="btn buttonAdd" data-toggle="modal" data-target="#kiddy">Add kid</button></td>
+                            <!--<button class="btn btn-warning" type="submit">Add kid</button></td>-->
                         </tr>
                     </form>
+                    
             </table>
         </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        </div>
-      </div>
-      
-    </div>
-  </div>
-
+   </div>
+</aside>
+<div class="container kidz">
+      <h1>Kids</h1>
+      <br>
+<div class="kidsFormCenter">
+        {% for kid in kids %}
+        <table class="kidsTable kidForm">
+            <form action="{% url 'update_profile_kid' kid.id %}" method="post">
+                {% csrf_token %}
+                <tr>
+                    <td>First name:</td>
+                    <td><input type="text" value="{{ kid.name }}" name="name"></td>
+                </tr>
+                <tr>
+                    <td>Date of Birth:</td>
+                    <td><input type="date" value="{{ kid.dob }}" name="dob"></td>
+                </tr>
+                <tr>
+                    <td>Gender:</td>
+                    <td><input type="text" maxlength="1" value="{{ kid.gender }}" name="gender"></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td><button class="btn buttonAdd" formaction="{% url 'update_profile_kid' kid.id %}" type="submit">Edit</button>
+                        <form action="{% url 'delete_profile_kid' kid.id %}" method="POST">
+                            {% csrf_token %}<button class="btn buttonDelete" formaction="{% url 'delete_profile_kid' kid.id %}" type="submit">Delete</button></td>
+                        </form>        
+                </tr>
+            </form>
+        </table>
 {% endfor %}
-</div> 
+</div>
+</div>
+
+<hr>
+<div class="container">
+    <div class="row">
+        <div class="col-sm-12 col-md-12 col-lg-12">
+    <table class="table table-striped">
+    <h3>Your order history</h3>
+    <hr>
+  <tr>
+    <th>Date</th>
+    <th>Invoice ID</th> 
+    <th>Description</th>
+    <th>Total</th>
+  </tr>
+  <tr>
+    <td>xxx</td>
+    <td>xxx</td>
+    <td>xxx</td>
+    <td>xxx</td>
+  </tr>
+  <tr>
+    <td>xxx</td>
+    <td>xxx</td>
+    <td>xxx</td>
+    <td>xxx</td>
+  </tr>
+  <tr>
+    <td>xxx</td>
+    <td>xxx</td>
+    <td>xxx</td>
+    <td>xxx</td>
+  </tr>
+</table>
+</div>
+    </div>
+</div>
+
     
  
 
@@ -123,12 +178,4 @@
 
 
 
-    <script type="text/javascript">
-        function cancelSubscriptionCheck() {
-            if (confirm('Are you sure you want to cancel?')) {
-                return true;
-            }
-            return false;
-        }
-    </script>
-</div>
+

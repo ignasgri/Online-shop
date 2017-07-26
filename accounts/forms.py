@@ -4,6 +4,7 @@ from django.core.exceptions import ValidationError
 from django.contrib.auth.models import User
 
 from .models import KidProfile
+from .models import UserProfile
 
 
 class UserLoginForm(forms.Form):
@@ -11,24 +12,35 @@ class UserLoginForm(forms.Form):
     password = forms.CharField(widget=forms.PasswordInput)
     
 
+# class FullUserDetailsForm(forms.ModelForm):
+#      class Meta:
+#          model=UserProfile
+#          fields = ['user','address1','address2','postcode','phone', 'dob', 'gender']
 
 class FullUserDetailsForm(forms.Form):
-    first_name = forms.CharField(max_length=None)
-    last_name = forms.CharField(max_length=None)
-    email = forms.CharField(max_length=None)
-    address1 = forms.CharField(max_length=255)
-    address2 = forms.CharField(max_length=255)
-    postcode = forms.CharField(max_length=7)
-    phone = forms.CharField(max_length=10)
-    dob = forms.DateField()
-    gender = forms.CharField(max_length=1)
+    first_name = forms.CharField(max_length=None, required=False)
+    last_name = forms.CharField(max_length=None, required=False)
+    email = forms.CharField(max_length=None, required=False)
+    address1 = forms.CharField(max_length=255, required=False)
+    address2 = forms.CharField(max_length=255, required=False)
+    postcode = forms.CharField(max_length=7, required=False)
+    phone = forms.CharField(max_length=10, required=False)
+    dob = forms.CharField(max_length=20, required=False)
+    gender = forms.CharField(max_length=1,required=False)
     
     # finish this
 
-class KidProfileForm(forms.ModelForm):
-    class Meta:
-        model=KidProfile
-        fields = ['name', 'dob', 'gender']
+
+class KidDetailsForm(forms.Form):
+    name = forms.CharField(max_length=None, required=False)
+    dob = forms.CharField(max_length=20, required=False)
+    gender = forms.CharField(max_length=1, required=False)
+
+
+# class KidProfileForm(forms.ModelForm):
+#     class Meta:
+#         model=KidProfile
+#         fields = ['name', 'dob', 'gender']
         # Finish this
 
 

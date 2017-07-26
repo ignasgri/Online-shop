@@ -13,17 +13,27 @@
 
 {% endblock %}
 
-{% block content %}
 
+{% block content %}
 <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 row">
     <div class="productwraper">
         <div class="sidebar sticky">
-        <img class="paymentsPic"src="{% static "images/pay.png" %}" alt="cookies">
+            <img class="paymentsPic" src="{% static "images/pay.png" %}" alt="cookies">
+                
+                            <div class="ibox">
+                                <div class="ibox-title">
+                                    <h5>Support</h5>
+                                </div>
+                                <div class="ibox-content text-center">
+                                    <h5><i class="fa fa-phone"></i> +353 87 7433 333</h5>
+                                    <span class="small">Please contact with us if you have any questions. We are avalible 24h.</span>
+                                </div>
+                            </div>
+                </div>
         </div>
     </div>
 </div>
-
-<div class="col-lg-8 col-md-8 col-sm-8 col-xs-8 row">
+    <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
     <table class="table table-striped">
         <thead>
             <tr>
@@ -31,7 +41,7 @@
                 <th>Name</th>
                 <th>Description</th>
                 <th>Price</th>
-                <th>Quantity</th>
+                <th>Items</th>
                 <th>Action</th>
             </tr>
         </thead>
@@ -40,14 +50,14 @@
                 <tr>
                     <td><img height="50" width="50" src="{{ MEDIA_URL }}{{ item.product.image }}"></td>
                     <td>{{ item.product.name }}</td>
-                    <td>{{ item.product.description }}</td>
-                    <td>{{ item.product.price }}</td>
+                    <td><div style="font-size:9px">{{ item.product.description }}</div></td>
+                    <td>€{{ item.product.price }}</td>
                     <td>{{ item.quantity }}</td>
                     <td>
                         <form method="post" action="{% url 'adjust_cart' item.id %}">
                             {% csrf_token %}
-                            Quantity
-                            <input name='quantity' type="number" min="0" max="999">
+                            
+                            <input class="smallInput" name='quantity' type="number" min="0" max="99">
                             <button i class="fa fa-refresh" aria-hidden="true" type="submit" ></i></button>
                             <!--<button type="submit">Adjust</button>-->
                         </form>
@@ -58,48 +68,40 @@
                     <td></td>
                     <td></td>
                     <td></td>
-                    <td>{{ total }}</td>
+                    <td>Total €{{ total }}</td>
                     <td></td>
                     <td></td>
                 </tr>
         </tbody>
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 row">
+            <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+            </div>
+            <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
+            <table class="table paymentTable">
+                <thead>
+                <tr>
+                    <td>
+                        <!-- Button trigger modal -->
+                        <div class="deliverytable">
+                        <h4>Pick a delivery data and time</h4>
+                            <form>
+                                <input class="days" type="date" name="days" min="2017-07-10">
+                                <input class="time" type="time" name="hours" min="05:00"><br>
+                            </form>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="stripepay">
+                        <img src="/static/images/stripe.png" style="cursor:pointer" width="200px" data-toggle="modal" data-target="#exampleModal">
+                    </div>
+                    </td>
+                </tr>
+                </thead>
+            </table>
+            </div>
+            </div>
     </table>
-
-
-<div class="row">
-    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-        <div class="row">
-            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 address-place">
-                <h3>Pick your delivery data</h3>
-                <form>
-                <input class="days" type="date" name="days" min="2017-07-10">
-                <input class="time" type="time" name="hours" min="00:00"><br>
-                </form>
-            </div>
-        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 address-place">
-                <h3>Enter your delivery address</h3>
-                    <input class="address" type="checkbox" name="address" value="delivery_address">Use dafault shipping address
-                    <button class="btn" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
-                    <i class="fa fa-plus-square-o" aria-hidden="true"></i> Add new shipping address</button>
-        <div class="collapse" id="collapseExample">
-            <div class="card card-block">
-                <input class="address-box" placeholder="Address line 1" type="text"><input class="address-box" placeholder="Address line 2" type="text"><input class="address-box" placeholder="Address line 3" type="text">
-                <input class="address-box" placeholder="Area" type="text">
-                <input class="address-box" placeholder="Post code" type="text">
-                <button type="button" class="add-button">Add</button>
-            </div>
-        </div>
-        </div>
-        </div>
-    </div>
 </div>
-</div>
-
-<!-- Button trigger modal -->
-<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 stripepay">
-    <img src="/static/images/stripe.png" width="200px" data-toggle="modal" data-target="#exampleModal">
-</div>
-
 
 <!-- Modal -->
 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -127,7 +129,5 @@
         </div>
     </div>
 </div>
-
-    
 
 {% endblock %}

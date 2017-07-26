@@ -1,7 +1,7 @@
 from django.contrib import messages, auth
-from accounts.forms import UserRegistrationForm, UserLoginForm
+from accounts.forms import UserRegistrationForm, UserLoginForm, FullUserDetailsForm, KidDetailsForm
 from django.core.urlresolvers import reverse
-from django.shortcuts import render, redirect, HttpResponseRedirect
+from django.shortcuts import render, redirect, HttpResponseRedirect, HttpResponse, get_object_or_404
 from django.template.context_processors import csrf
 from django.contrib.auth.decorators import login_required
 from .models import KidProfile, UserProfile
@@ -11,6 +11,54 @@ def profile(request):
     kids = KidProfile.objects.filter(parent=request.user)
     adults = UserProfile.objects.filter(user=request.user)
     return render(request, 'profile.html', {'kids': kids}, {'adults': adults})
+
+def update_profile(request):
+    form=FullUserDetailsForm(request.POST, request.FILES)
+    if form.is_valid():
+        pass
+    else:
+        request.user.first_name=form.cleaned_data['first_name']
+        request.user.last_name=form.cleaned_data['last_name']
+        request.user.email=form.cleaned_data['email']
+        request.user.profile.address1=form.cleaned_data['address1']
+        request.user.profile.address2=form.cleaned_data['address2']
+        request.user.profile.postcode=form.cleaned_data['postcode']
+        request.user.profile.phone=form.cleaned_data['phone']
+        request.user.dob=form.cleaned_data['dob']
+        request.user.gender=form.cleaned_data['gender']
+        request.user.save()
+        return redirect(reverse('profile'))
+
+def update_profile_kid(request, id):
+    kid = get_object_or_404(KidProfile, pk=id)
+    form=KidDetailsForm(request.POST, request.FILES)
+    if form.is_valid():
+        kid.name=form.cleaned_data['name']
+        kid.dob=form.cleaned_data['dob']
+        kid.gender=form.cleaned_data['gender']
+        kid.save()
+        return redirect(reverse('profile'))
+    else:
+        return HttpResponse("Error")
+        
+def create_profile_kid(request):
+    form=KidDetailsForm(request.POST, request.FILES)
+    if form.is_valid():
+        kid=KidProfile()
+        kid.name=form.cleaned_data['name']
+        kid.dob=form.cleaned_data['dob']
+        kid.gender=form.cleaned_data['gender']
+        kid.parent=request.user
+        kid.save()
+        return redirect(reverse('profile'))
+    else:
+        return HttpResponse("Error")
+        
+def delete_profile_kid(request, id):
+    kid = get_object_or_404(KidProfile, pk=id)
+    kid.delete()
+    return redirect(reverse('profile'))
+
 
 
 def login(request):
@@ -69,4 +117,4 @@ def register(request):
     args = {'form': form}
     args.update(csrf(request))
 
-    return render(request, 'register.html', args)
+    return render(request, 'profile.html', args)

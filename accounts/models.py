@@ -10,17 +10,13 @@ from django.utils import timezone
 
 # Create your models here.
 class UserProfile(models.Model):
-    GENDER_CHOICES = (
-        ('M', 'Male'),
-        ('F', 'Female'),
-    )
     user = models.OneToOneField(User, on_delete=models.CASCADE, related_name="profile")
-    address1 = models.CharField(max_length=255, default='', blank=True)
-    address2 = models.CharField(max_length=255, default='',blank=True)
-    postcode = models.CharField(max_length=7, default='',blank=True)
-    phone = models.CharField(max_length=10, default='',blank=True)
-    dob = models.DateField(blank=True, null=True)
-    gender = models.CharField(max_length=1, choices=GENDER_CHOICES, default='',blank=True)
+    address1 = models.CharField(max_length=255, null=True, blank=True)
+    address2 = models.CharField(max_length=255, null=True, blank=True)
+    postcode = models.CharField(max_length=7, null=True, blank=True)
+    phone = models.CharField(max_length=10, null=True, blank=True)
+    dob = models.CharField(max_length=20, null=True, blank=True)
+    gender = models.CharField(max_length=1, null=True, blank=True)
 
 
 @receiver(post_save, sender=User)
@@ -36,14 +32,10 @@ def save_user_profile(sender, instance, **kwargs):
 
 
 class KidProfile(models.Model):
-    GENDER_CHOICES = (
-        ('M', 'Male'),
-        ('F', 'Female'),
-    )
     parent = models.ForeignKey(User, related_name='kids')
-    name = models.CharField(max_length=255, default='', blank=True)
-    dob = models.DateField(blank=True, null=True)
-    gender = models.CharField(max_length=1, choices=GENDER_CHOICES, default='',blank=True)
+    name = models.CharField(max_length=255, null=True, blank=True)
+    dob = models.CharField(max_length=20, null=True, blank=True)
+    gender = models.CharField(max_length=1, null=True, blank=True)
 
     def __str__ (self):
         return self.name

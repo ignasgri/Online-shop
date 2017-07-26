@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 {% load static from staticfiles%}
+{% load bootstrap_tags %}
 {%block content%}
 
 <video class="video" autoplay muted loop>
@@ -9,7 +10,7 @@
 <section> 
     <div class="searchbar">
         <div class="inline">
-             <h2>Look up for your favorite food!</h2>
+             <h2>What's for lunch Mum?</h2>
              <form method='GET' action="{% url 'search' %}">
                 <input type="text" name="search" class="search-form-control" placeholder="Search"><button id="search_button" type="submit" class="btn btn-default"><i class="fa fa-search" aria-hidden="true"></i> Search</button>
              </form>

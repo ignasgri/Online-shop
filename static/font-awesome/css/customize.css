@@ -1,11 +1,39 @@
+body{
+    background-color: #f3f3f4!important;
+}
+.row{
+    margin: auto!important;
+}
+.table{
+    background-color: white!important;
+}
+.kidsTable {
+    width: 350px;
+    display: inline-block;
+}
+.kidz{
+    position: relative;
+}
+.paymentTable{
+    margin-top: -40px;
+}
+.smallInput{
+    width: 40px;
+}
+.alert{
+    width: 200px;
+    float: right;
+    text-align: center;
+    margin-right: 30px;
+}
 /*login modal*/
 .modal-content{
-    background-color: rgba(255,255,255,0.1);
+    background-color: rgba(0,0,0,0.8);
     border-radius: 0px;
     text-align: center; 
 }
 .modal-height{
-    height: 360px;
+    height: 420px;
 }
 #myModalLabel{
     color: white;
@@ -38,6 +66,9 @@
     left: 90%;
     color: gray;
 }
+input.placeholder{
+    color: white;
+}
 input.textfield{
     background-color: transparent;
     border: 1px solid white;
@@ -48,6 +79,9 @@ input.textfield{
     text-align: center;
     color: white;
     font-weight: bold;
+}
+input::placeholder {
+  color: white;
 }
 @-webkit-keyframes autofill {
     to {
@@ -90,6 +124,12 @@ input:-webkit-autofill {
     border-radius: 0px;
     margin-left: 15px;
 }
+.buttonreg {
+    width: 225px;
+    float: left;
+    border-radius: 0px;
+    width: 100%
+}
 .buttonregs{
     width: 225px;
     border-radius: 0px;
@@ -100,8 +140,8 @@ input:-webkit-autofill {
     width: 100%;
     border-radius: 0px;
 }
-.fa-lock, .fa-user, .fa-cogs{
-        padding-bottom: 20px;
+.fa-lock, .fa-user, .fa-cogs, .fa-envelope-o{
+    padding-bottom: 20px;
     position: absolute;
     float: right;
     margin-top: 6px;
@@ -133,7 +173,7 @@ input:-webkit-autofill {
 video{
     position: absolute;
     top: 0;
-    height: 800px;
+    height: 900px;
     background-size: cover;
     background-position: center center;
     background-attachment: fixed;
@@ -144,7 +184,7 @@ video{
 }
 .delivery-logo{
     width: 100%;
-    top: 110px;
+    top: 60px;
     position: relative
 }
 /*.deliv{
@@ -159,16 +199,16 @@ video{
     text-align: center;
     font-family: 'Cousine';
     height: 200px;
-    display: flex;
-    padding-left: 38%;
+    text-align: right;
+    display: inline-block;
 }
 .userForm{
     left: 30px;
     font-size: 12px;
 }
 .kidForm{
-    left: 30px;
     font-size: 12px;
+    height: 180px;
 }
 .userForm input{
     /*border: 1px solid gray;*/
@@ -182,32 +222,52 @@ video{
     border: none;
     width: 80px;
 }
-.kidForm input{
-    border: none;
-    height: 30px;
-    width: 200px;
-}
-.kidForm select{
-    /*border: 1px solid gray;*/
-    height: 30px;
-    border: none;
-    width: 80px;
-}
 .greating-message{
     margin-top: 70px;
     font-size: 40px;
 }
 .personalInfoProfile td{
-    font-family: 'Roboto Mono'
+    font-family: 'Roboto Mono';
 }
 .personalInfoProfile input, select{
     margin-left: 20px;
+    padding-left: 20px;
+    margin-top: 5px;
+    font-family: 'Roboto Mono';
+}
+.personalInfoProfile{
+    
+}
+.profileImage{
+    width: 350px;
+    height: 350px;
+    margin-top: 80px;
+    text-align: center;
+}
+.kidsFormCenter{
+    text-align: center;
+    font-family: 'Roboto Mono';
+}
+.resetFormCenter{
+    text-align: center;
+    font-family: 'Roboto Mono';
+    display: inline-block;
+    margin-top: 20px;
+    width: 100%;
 }
 .kidForm td{
-    font-family: 'Roboto Mono'
+    font-family: 'Roboto Mono';
 }
 .kidForm input, select{
     margin-left: 20px;
+    padding-left: 20px;
+    margin-bottom: 5px;
+    border: none;
+    height: 30px;
+    width: 200px;
+}
+.inlineBlockLogin{
+    display: inline-block;
 }
 i.fa-stack-1x {
     font-size: 11px;
@@ -217,6 +277,18 @@ i.fa-stack-1x {
     margin-top: -40px;
     color:#820f0f;
     position: absolute;
+}
+/*.productInfo{
+    float: left;
+}*/
+.inlineButtons{
+    display: inline-flex;
+}
+.modal-content1{
+    background-color: white;
+    border-radius: 0px; 
+    text-align: center;
+    margin-top: 100px;
 }
 .imageprices{
         width: 200px;
@@ -311,7 +383,7 @@ a.post-meta{
     
 }
 .productmenu{
-    padding: 0px 50px 0px 20px;
+    padding: 0px 0px 0px 20px;
 }
 .products-container{
     /*margin-left: 0;*/
@@ -343,6 +415,62 @@ a.post-meta{
     font-family: 'Roboto Mono';
     color: white;
 }
+.resetLogin{
+    color:black; 
+    border:1px solid black; 
+    border-radius:10px; 
+    width:70px; 
+    height:40px; 
+    margin-bottom:100px; 
+}
+.ibox {
+    clear: both;
+    margin-bottom: 25px;
+    margin-top: 10px;
+    padding: 0;
+    margin: auto;
+}
+.ibox-title {
+    -moz-border-bottom-colors: none;
+    -moz-border-left-colors: none;
+    -moz-border-right-colors: none;
+    -moz-border-top-colors: none;
+    background-color: #ffffff;
+    border-color: #e7eaec;
+    border-image: none;
+    border-style: solid solid none;
+    border-width: 2px 0 0;
+    color: inherit;
+    margin-bottom: 0;
+    padding: 15px 15px 7px;
+    min-height: 48px;
+}
+.ibox-title h5 {
+    display: inline-block;
+    font-size: 14px;
+    margin: 0 0 7px;
+    padding: 0;
+    text-overflow: ellipsis;
+    float: left;
+}
+.ibox-content {
+    clear: both;
+}
+.ibox-content {
+    background-color: white;
+    color: inherit;
+    padding: 15px 20px 20px 20px;
+    border-color: #e7eaec;
+    border-image: none;
+    border-style: solid solid none;
+    border-width: 1px 0;
+}
+.text-center {
+    text-align: center;
+}
+.small, small {
+    font-size: 65%;
+}
 span.fa-stack.fa-lg{
     position: relative;
     display: inline-block;
@@ -360,7 +488,7 @@ span.fa-stack.fa-lg{
     font-family: 'dosis';
     padding-bottom: 10px;
     padding-left: 30px;
-    background-color: white;
+    background-color: #f3f3f4;
     width: 100%;
     position: absolute;
     margin: 0;
@@ -417,6 +545,7 @@ footer{
     width: 100%;
     position: relative;
     text-align: center;
+    padding-top: 20px;
 }
 .inline h2{
     font-family: 'Permanent Marker', monospace;
@@ -439,7 +568,7 @@ h6{
     border: none;
 }
 .searchbar{
-    height: 200px;
+    height: 300px;
     width:100%;
     background-color: rgba(0,0,0,0.5);
     position: relative;
@@ -513,7 +642,43 @@ background-size: cover;
     border-radius: 0px;
     z-index: 1;
 }
-
+.buttonAdd{
+    height: 40px!important;
+    width: 90px;
+    background-color: white;
+    color: gray;
+    border: 1px solid gray!important;
+    float: right;
+    margin-top: 10px;
+}
+.buttonUpdate{
+    height: 40px!important;
+    width: 80px;
+    background-color: white;
+    color: gray;
+    border: 1px solid gray!important;
+    float: right;
+    margin-left: 5px;
+    margin-top: 10px;
+}
+.buttonDelete{
+    height: 40px!important;
+    width: 80px;
+    background-color: white;
+    color: gray;
+    border: 1px solid gray!important;
+    float: right;
+    margin-left: 5px;
+    margin-top: 10px;
+    margin-right: 5px;
+}
+.buttonLogin{
+    height: 40px!important;
+    width: 80px;
+    background-color: white;
+    color: gray;
+    border: 1px solid gray!important;
+}
 .btn{
     
     background-image: none;
@@ -532,6 +697,13 @@ a.blog{
 }
 .cart{
     padding-right:20px;
+}
+.emptyCart{
+    text-align: center;
+    height: 350px;
+}
+.goShop{
+    color: gray;
 }
 .navbar-brand:hover{
     padding-left: 60px;
@@ -660,7 +832,7 @@ label{
     border: 1px solid black; 
 }
 .paymentsPic{
-    width:100%;
+    width:90%;
     position: relative;
     left: -700px;
     -webkit-animation: slide 0.5s forwards;
@@ -675,13 +847,13 @@ label{
     100% { left: 0; }
 }
 
-
-
-
-.container {
-  width: 1000px;
-  position: relative;
+.deliverytable{
+    margin-left: 40px;
+    margin-top: -20px;
 }
+
+
+
 
 .header {
   clear: both;
@@ -703,14 +875,6 @@ label{
   height: 800px;
 }
 
-.footer {
-  clear: both;
-  margin-top: 10px;
-  
-  height: 600px;
-}
-
-
 
 
 
@@ -731,8 +895,15 @@ label{
     transition: 1s ease-in;
     font-size: 15px;
 }}
+@media (max-width:1000px){
+.sidebar{
+    display: none;
+}}
 @media (max-width: 800px){
-.phone {
+.phone, .productshow {
+    display: none;
+}
+.sidebar{
     display: none;
 }
 .footerbarcontent h1{
@@ -757,6 +928,9 @@ label{
 .productwraper{
     display: none;
 }
+.sticky, .sidebar{
+    display: none;
+}
 .userForm input, select{
     width: 200px;
 }
@@ -766,10 +940,10 @@ label{
 .paymentsPic {
     display: none;
 }
-input.days, input.time{
+/*input.days, input.time{
     width:100px;
     margin-left: -30px;
-}
+}*/
 .card{
     width: 500px;
     transform: rotate(90deg);
