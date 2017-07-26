@@ -11,12 +11,11 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <link href="https://fonts.googleapis.com/css?family=Cousine|Permanent+Marker|Roboto+Mono|Dosis" rel="stylesheet">
-    <style type="text/css">@font-face {font-family: "CREDC"; src:url('{% static 'font-awesome/fonts/CREDC.ttf' %}');}</style>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link rel="stylesheet" href="{% static 'font-awesome/css/balloon.css' %}">
     <link rel="stylesheet" href="{% static 'font-awesome/css/font-awesome.min.css' %}">
-    <link rel="stylesheet" href="{% static 'font-awesome/fonts/CREDC.ttf' %}">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0-alpha1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-alpha/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="{% static 'font-awesome/css/customize.css' %}">
     <link rel="shortcut icon" href="{% static 'images/favicon.png' %}"/>
@@ -62,7 +61,7 @@
           {% endif %}
           <div class="nav navbar-nav navbar-right cart">
                 {% if user.is_authenticated %}
-                    <li data-balloon="Total €{{ total }}" data-balloon-pos="down"><a a href="{% url 'cart' %}"><i class="fa fa-shopping-cart"></i> Cart</a></li>
+                    <li class="righticons"><a href="{% url 'cart' %}"><i class="fa fa-shopping-cart" aria-hidden="true"></i> Cart</a></li>
                 {% else %}
                     <button type="button" class="righticons" data-toggle="modal" data-target="#modalLogin"><i class="fa fa-shopping-cart" aria-hidden="true"></i> Cart
                 {% endif %}

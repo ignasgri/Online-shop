@@ -5,10 +5,11 @@
 
 <div class="modal fade" id="kiddy" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
     <div class="modal-dialog" role="document">
-        <div class="modal-content">
+        <div class="modal-contentAdd pushthirtyzero">
             <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
             <h4 class="modal-title" id="myModalLabel">Registration</h4>
             <div class="modal-body">
+                <table class="kidsTableAdd kidFormAdd">
                 <form action="{% url 'create_profile_kid' %}" method="post">
                 {% csrf_token %}
                     <tr>
@@ -24,11 +25,13 @@
                         <td><input type="text" maxlength="1" value="{{ kid.gender }}" name="gender"></td>
                     </tr>
                     <tr>
+                        <td></td>
                         <td>
-                        <button class="btn btn-success" type="submit">Add</button>
+                        <button class="btn buttonAdd2" type="submit">Add</button>
                         </td>
                     </tr>
                 </form>
+                </table>
             </div>
         </div>
     </div>
@@ -37,7 +40,7 @@
 
 <aside>
     <div class="row">
-        <div class="col-lg-5 col-md-5 col-sm-5 col-xs-5 profile-top"> 
+        <div class="col-lg-5 col-md-5 col-sm-5 col-xs-12 profile-top"> 
             <img class="profileImage"src="{% gravatar_url user.email %}">
         </div>
         {% comment %}<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 greating-message">
@@ -46,7 +49,7 @@
  
 
 
-        <div class="col-sm-7 col-md-7 col-lg-7 userForm">
+        <div class="col-xs-12 col-sm-7 col-md-7 col-lg-7 userForm">
             <table class="personalInfoProfile">
                 <h1>Personail details</h1>
                     <form class="" action="{% url 'update_profile' %}" method="post">

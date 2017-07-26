@@ -11,6 +11,10 @@ body{
     width: 350px;
     display: inline-block;
 }
+.kidsTableAdd{
+    width: 350px;
+    display: inline-block;
+}
 .kidz{
     position: relative;
 }
@@ -31,6 +35,24 @@ body{
     background-color: rgba(0,0,0,0.8);
     border-radius: 0px;
     text-align: center; 
+}
+.modal-contentPay{
+    background-color: white;
+    border-radius: 0px;
+    text-align: right;
+    max-width: 300px;
+    margin: auto;
+    border-radius: 10px;
+}
+.modal-contentAdd{
+    background-color: rgba(0,0,0,0.8);
+    text-align: center;
+    max-width: 400px;
+    margin: auto;
+    border-radius: 10px;
+}
+.pushthirtyzero{
+    padding-left: 30px;
 }
 .modal-height{
     height: 420px;
@@ -53,18 +75,20 @@ body{
     margin-right: 7px;
 }
 
-.close-card{
-        float: right;
+.close-card {
+    /* float: right; */
     font-size: 21px;
     font-weight: 700;
     line-height: 1;
     color: white;
-    margin-top: 12px;
+    /* margin-top: 12px; */
     margin-right: 7px;
-    position: absolute;
-    z-index: 1;
-    left: 90%;
+    /* position: absolute; */
+    /* z-index: 1; */
+    /* left: 95%; */
     color: gray;
+    /* float: right; */
+    /* width: 400px; */
 }
 input.placeholder{
     color: white;
@@ -194,21 +218,44 @@ video{
 
 }*/
 .profile-top{
-    vertical-align: middle;
+       vertical-align: middle;
     color: white;
     text-align: center;
     font-family: 'Cousine';
-    height: 200px;
-    text-align: right;
+    /* height: 200px; */
+    /* text-align: right; */
     display: inline-block;
+    margin: auto;
+    /* text-align: center; */
 }
 .userForm{
-    left: 30px;
+        /* left: 30px; */
     font-size: 12px;
+    /* width: 100%; */
+    /* display: block; */
+    /* position: relative; */
+    margin: auto;
 }
 .kidForm{
     font-size: 12px;
     height: 180px;
+}
+.kidFormAdd{
+    font-size: 12px;
+    height: 180px;
+}
+.kidFormAdd td{
+    color: white;
+}
+.kidFormAdd input, select {
+    margin-left: 20px;
+    padding-left: 20px;
+    margin-bottom: 5px;
+    border: none;
+    height: 30px;
+    width: 200px;
+    color: black!important;
+    background-color: white!important;
 }
 .userForm input{
     /*border: 1px solid gray;*/
@@ -236,7 +283,7 @@ video{
     font-family: 'Roboto Mono';
 }
 .personalInfoProfile{
-    
+    margin: auto;
 }
 .profileImage{
     width: 350px;
@@ -291,7 +338,7 @@ i.fa-stack-1x {
     margin-top: 100px;
 }
 .imageprices{
-        width: 200px;
+    width: 200px;
     padding: 0px;
     display: inline-block;
     margin-top: 5px;
@@ -332,7 +379,7 @@ a.post-meta{
     border: 4px double #e5e5e5;
     padding-bottom: 40px;
 }*/
-.cookies{
+/*.cookies{
     width:100%;
     position: absolute;
     left: -700px;
@@ -353,9 +400,6 @@ a.post-meta{
     position: relative;
     margin-top: 70%;
     margin-left: 50%;
-    /*animation-delay: 2s; */
-    /*-webkit-animation-delay: 5s;*/
-    /*-webkit-animation: fadeIn 5s;*/
     animation-name: fadeIn;
      animation-timing-function: ease-in;
      
@@ -374,14 +418,14 @@ a.post-meta{
   100% {
     opacity: 1;
   }
-}
-.note{
+}*/
+/*.note{
     height: 100%;
     padding: auto;
     padding-top: 40px;
     padding-left: -50px;
     
-}
+}*/
 .productmenu{
     padding: 0px 0px 0px 20px;
 }
@@ -651,6 +695,15 @@ background-size: cover;
     float: right;
     margin-top: 10px;
 }
+.buttonAdd2{
+    height: 40px!important;
+    width: 90px;
+    background-color: white;
+    color: gray;
+    border: 1px solid gray!important;
+    float: right;
+    margin-top: 10px;
+}
 .buttonUpdate{
     height: 40px!important;
     width: 80px;
@@ -678,6 +731,15 @@ background-size: cover;
     background-color: white;
     color: gray;
     border: 1px solid gray!important;
+}
+.buttonPay{
+    height: 40px!important;
+    width: 130px;
+    background-color: white;
+    color: gray;
+    border: 1px solid gray!important;
+    text-align: center;
+    margin-top: -90px;
 }
 .btn{
     
@@ -730,18 +792,6 @@ a.blog{
     position: relative;
     width: 100%;
 }
-.card-details{
-    position: absolute;
-    height: 30%;
-    text-align: center;
-    width: 100%;
-    margin: auto;
-    top: 0;
-    bottom: 0;
-    right: 0;
-    left: 0;
-    font-size: 30px;
-}
 label{
     display: none;
 }
@@ -754,61 +804,44 @@ label{
     text-shadow: 2px;
     color: black;
 }
-#id_credit_card_number{
-    font-size: 16px!important;
+#id_credit_card_number {
+    font-size: 12px!important;
     text-align: center;
-    color: white;
-    text-shadow: 2px 0px 2px black;
-    font-family: 'CREDC';
-    position: relative;
     display: inline-block;
     width: 70%;
-    top: 40px;
     height: 40px;
-    letter-spacing: 5px;
+    letter-spacing: 4px;
+    position: relative;
+    margin-top: 20px;
 }
-#id_expiry_month{
-    left: 160px;
-    position: absolute;
-    width: 62px;
-    top: 100px;
-    font-family: 'CREDC';
-    color: white;
-    text-shadow: 2px 0px 2px black;
+#id_expiry_month {
+        left: 25px;
+    position: relative;
+    width: 20%;
 }
-#id_expiry_year{
-    left: 270px;
-    position: absolute;
-    width: 80px;
-    top: 100px;
-    font-family: 'CREDC';
-    color: white;
-    text-shadow: 2px 0px 2px black;
+#id_expiry_year {
+    left: 100px;
+    position: relative;
+    width: 25%;
+    top: -46px;
 }
-#id_cvv{
-    position: absolute;
-    width: 50px;
-    left: 400px;
-    top: 100px;
-    font-family: 'CREDC';
-    color: white;
-    text-shadow: 2px 0px 2px black;
+#id_cvv {
+    position: relative;
+    width: 15%;
+    left: 210px;
+    top: -92px;
 }
-.name-filed{
-    width: 420px;
+.name-filed {
+    width: 70%;
     height: 40px;
-    position: absolute!important;
-    left: 90px;
-    top: 300px;
-    background: transparent;
     background-color: rgba(0,0,0,0.1);
-    border: none;
     border-radius: 4px;
-    font-family: 'CREDC';
-    font-size: 30px!important;
-    color: white;
+    color: black!important;
     text-align: center;
-    text-shadow: 2px 0px 2px black;
+    top: -90px;
+    border: none;
+    font-size: 12px!important;
+    position: relative!important;
 }
 .address-box{
     width: 70%;
@@ -851,23 +884,16 @@ label{
     margin-left: 40px;
     margin-top: -20px;
 }
-
-
-
-
 .header {
   clear: both;
   margin-bottom: 10px;
   
   height: 90px;
 }
-
 .sidebar {
   float: left;
   width: 350px;
-  
 }
-
 .content {
   float: right;
   width: 640px;
@@ -876,11 +902,40 @@ label{
 }
 
 
+/* Make the images wide and responsive. */
+/* Change the order of the indicators. 
+   Return them to the center of the slide. */
+.carousel {
+    position: relative;
+    margin-left: -15px;
 
+}
+.carousel-inner {
+    position: relative;
+    overflow: hidden;
 
+}
+.carousel-indicators {
+    display: none;
+}
 
-
-
+/* Change the direction of the transition. */
+@media all and (transform-3d), (-webkit-transform-3d) {
+  .carousel-inner > .item.next,
+  .carousel-inner > .item.active.right {
+    left: 0;
+    /*-webkit-transform: translate3d(-100%, 0, 0);*/
+    -webkit-transform: translate3d(-100%, 0, 0);
+    transform: translate3d(-100%, 0, 0);
+    
+  }
+  .carousel-inner > .item.prev,
+  .carousel-inner > .item.active.left {
+    left: 0;
+    -webkit-transform: translate3d(0, 0, 100%);
+    transform: translate3d(0, 0, 100%);
+  }
+}
 
 
 @media (max-width: 1200px){

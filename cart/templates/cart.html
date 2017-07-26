@@ -92,7 +92,7 @@
                     </td>
                     <td>
                         <div class="stripepay">
-                        <img src="/static/images/stripe.png" style="cursor:pointer" width="200px" data-toggle="modal" data-target="#exampleModal">
+                        <img src="{% static "images/stripe.png" %}" style="cursor:pointer" width="200px" data-toggle="modal" data-target="#exampleModal">
                     </div>
                     </td>
                 </tr>
@@ -106,24 +106,21 @@
 <!-- Modal -->
 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
-    <div class="modal-content-3">
+    <div class="modal-contentPay">
         <button type="button" class="close-card" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
             <div class="modal-body-3">
                 <form role="form" method="post" id="payment-form" action="{% url 'cart' %}">
                     <div id="credit-card-errors" style="display:none">
                         <div class="alert-message block-message error" id="stripe-error-message"></div>
                     </div>
-                        <img class="card" src="/static/images/visa.png">
         
-                    <div class="card-details">
+                    <img src="{% static "images/payments.png" %}" style="width: 100%">
                         {% csrf_token %}
                         {{ form | as_bootstrap }}
-                    </div>
-                        <input class="name-filed" type="text" placeholder="NAME IN CAPITAL LETTERS">
-                    <div class="form-group">
-                        <input class="btn btn-success button" id="submit_payment_btn" name="commit" type="submit" value="Confirm payment">
-                        <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel Order</button>
-                    </div>
+                    
+                        <input class="name-filed" type="text" placeholder="Full name">
+                        <input class="btn buttonPay" id="submit_payment_btn" name="commit" type="submit" value="Confirm payment">
+                        <button type="button" class="btn buttonPay" data-dismiss="modal">Cancel Order</button>
                 </form>
             </div>
         </div>

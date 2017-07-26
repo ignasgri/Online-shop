@@ -6,57 +6,53 @@
     <div class="col-sm-6 col-md-6 col-ld-6 userForm row">
         <table>
             <h1>Registration form</h1>
-                <form class="" action="/" method="get">
-                        <td>First name*:</td> 
-                        <td><input type="text" placeholder="Firstname" name="fname"></td>
-                    </tr>
+                <form class="" action="{% url 'update_profile' %}" method="post">
+                        {% csrf_token %}
                         <tr>
-                        <td>Last name*:</td> 
-                        <td><input type="text" placeholder="Last Name" name="lname"></td>
-                    </tr>
-                    <tr>
-                        <td>Email*:</td>
-                        <td><input type="email" placeholder="Email" name="email"></td>
-                    </tr>
-                    <tr>
-                        <td>Password*:</td>
-                        <td><input type="text" placeholder="Password" name="pass1"></td>
-                    </tr>
-                    <tr>
-                        <td>Reapet password*:</td>
-                        <td><input type="text" placeholder="Re Password" name="pass2"></td>
-                    </tr>
-                    <tr>
-                        <td>Address:</td>
-                        <td><input type="text" placeholder="Address" name="addres1"></td>
-                    </tr>
-                    <tr>
-                        <td>Address:</td>
-                        <td><input type="text" placeholder="Address" name="address2"></td>
-                    </tr>
-                    <tr>
-                        <td>Post Code:</td>
-                        <td><input type="text" placeholder="Post code" name="post code"></td>
-                    </tr>
-                    <tr>
-                        <td>Phone no:</td>
-                        <td><input type="text" placeholder="Phone no" name="phone no"></td>
-                    </tr>
-                    <tr>
-                        <td>Date of Birth:</td>
-                        <td><input type="date" placeholder="Date of birth" name="dob"></td>
-                    </tr>
-                    <tr>
-                        <td>Gender:</td>
-                        <td><select>
-                        <option value="Male">Male</option>
-                        <option value="Female">Female</option>
-                        </select></td>
-                    </tr>
-                    <tr>
-                        <td><button type="submit">Register</button></td>
-                    </tr>
-                </form>
+                            <td>First name*:</td> 
+                            <td><input type="text" value="{{ user.first_name }}" name="first_name"></td>
+                        </tr>
+                        <tr>
+                            <td>Last name*:</td> 
+                            <td><input type="text" value="{{ user.last_name }}" name="last_name"></td>
+                        </tr>
+                        <tr>
+                            <td>Email*:</td>
+                            <td><input type="email" value="{{ user.email }}" name="email"></td>
+                        </tr>
+                        <tr>
+                            <td>Address:</td>
+                            <td><input type="text" value="{{ user.profile.address1 }}" name="address1"></td>
+                        </tr>
+                        <tr>
+                            <td>Address:</td>
+                            <td><input type="text" value="{{ user.profile.address2 }}" name="address2"></td>
+                        </tr>
+                        <tr>
+                            <td>Post Code:</td>
+                            <td><input type="text" value="{{ user.profile.postcode }}" name="postcode"></td>
+                        </tr>
+                        <tr>
+                            <td>Phone no:</td>
+                            <td><input type="text" value="{{ user.profile.phone }}" name="phone"></td>
+                        </tr>
+                        <tr>
+                            <td>Date of Birth:</td>
+                            <td><input type="date" value="{{ user.profile.dob }}" name="dob"></td>
+                        </tr>
+                        <tr>
+                            <td>Gender:</td>
+                            <td><input type="text" maxlength="1" value="{{ user.profile.gender }}" name="gender">
+                            </td>
+                        </tr>
+                        <tr>
+                        <br>
+                            <td></td>
+                            <td><button class="btn buttonUpdate" type="submit">Update</button>
+                            <button type="button" class="btn buttonAdd" data-toggle="modal" data-target="#kiddy">Add kid</button></td>
+                            <!--<button class="btn btn-warning" type="submit">Add kid</button></td>-->
+                        </tr>
+                    </form>
         </table>
     </div>
 
@@ -65,20 +61,17 @@
             <h1>Add kids information</h1>
                 <form class="form" action="">
                     <tr>
-                        <td>First name:</td>
-                        <td><input type="text" placeholder="Firstname" name="fname"></td>
-                    </tr>
-                    <tr>
-                        <td>Date of Birth:</td>
-                        <td><input type="date" placeholder="Date of birth" name="dob"></td>
-                    </tr>
-                    <tr>
-                        <td>Gender:</td>
-                        <td><select>
-                        <option value="Male">Male</option>
-                        <option value="Female">Female</option>
-                        </select></td>
-                    </tr>
+                    <td>First name:</td>
+                    <td><input type="text" value="{{ kid.name }}" name="name"></td>
+                </tr>
+                <tr>
+                    <td>Date of Birth:</td>
+                    <td><input type="date" value="{{ kid.dob }}" name="dob"></td>
+                </tr>
+                <tr>
+                    <td>Gender:</td>
+                    <td><input type="text" maxlength="1" value="{{ kid.gender }}" name="gender"></td>
+                </tr>
                     <tr>
                         <td><button type="submit">+Add</button></td>
                     </tr>

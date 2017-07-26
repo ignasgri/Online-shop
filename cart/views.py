@@ -11,6 +11,7 @@ import stripe
 from django.contrib.auth.models import User
 from .serializers import UserSerializer
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
+from django.http import HttpResponseRedirect
 
 from rest_framework import viewsets
 from .serializers import CartItemSerializer
@@ -69,6 +70,7 @@ def user_cart(request):
 def add_to_cart(request, id):
     product = get_object_or_404(Product, pk=id)
     quantity=int(request.POST.get('quantity'))
+    
 
     try:
         cartItem = CartItem.objects.get(user=request.user, product=product)
@@ -81,7 +83,7 @@ def add_to_cart(request, id):
         )
 
     cartItem.save()
-    return redirect(reverse('products'))
+    return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
 
 @login_required(login_url="/accounts/login")
 def add_plus(request, id):
