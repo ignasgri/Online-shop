@@ -88,6 +88,7 @@ WSGI_APPLICATION = 'onlineshop.wsgi.application'
 # https://docs.djangoproject.com/en/1.11/ref/settings/#databases
 
 
+DATABASES={'default': dj_database_url.parse('postgres://mxapvyooycdayo:651c321c067e4e1393d09664e23a553e643ab44bb01ba4a01a1662a5a9c99123@ec2-54-75-248-193.eu-west-1.compute.amazonaws.com:5432/d2vfj547oahqce')}
 DATABASES = {'default': dj_database_url.parse(os.environ.get('DATABASE_URL')) }
 # DATABASES = {
 #     'default': {
