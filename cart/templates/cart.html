@@ -15,31 +15,30 @@
 
 
 {% block content %}
-<div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 row">
-    <div class="productwraper">
-        <div class="sidebar sticky">
-            <img class="paymentsPic" src="{% static "images/pay.png" %}" alt="cookies">
-                
-                            <div class="ibox">
-                                <div class="ibox-title">
-                                    <h5>Support</h5>
-                                </div>
-                                <div class="ibox-content text-center">
-                                    <h5><i class="fa fa-phone"></i> +353 87 7433 333</h5>
-                                    <span class="small">Please contact with us if you have any questions. We are avalible 24h.</span>
-                                </div>
-                            </div>
+<div class="row">
+    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+        <div class="productwraper">
+            <div class="sidebar sticky">
+                <img class="paymentsSlide" src="{% static "images/pay.png" %}" alt="pay">
+                <div class="ibox paymentsSlide">
+                    <div class="ibox-title">
+                        <h5>Support</h5>
+                    </div>
+                    <div class="ibox-content text-center">
+                        <h5><i class="fa fa-phone"></i> +353 87 7433 333</h5>
+                        <span class="small">Please contact with us if you have any questions. We are avalible 24h.</span>
+                    </div>
                 </div>
+            </div>
         </div>
     </div>
-</div>
+
     <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
     <table class="table table-striped">
         <thead>
             <tr>
                 <th>Image</th>
-                <th>Name</th>
-                <th>Description</th>
+                <th>Name / Description</th>
                 <th>Price</th>
                 <th>Items</th>
                 <th>Action</th>
@@ -49,8 +48,7 @@
             {% for item in items %}
                 <tr>
                     <td><img height="50" width="50" src="{{ MEDIA_URL }}{{ item.product.image }}"></td>
-                    <td>{{ item.product.name }}</td>
-                    <td><div style="font-size:9px">{{ item.product.description }}</div></td>
+                    <td>{{ item.product.name }}<br><div style="font-size:9px">{{ item.product.description }}</div></td>
                     <td>€{{ item.product.price }}</td>
                     <td>{{ item.quantity }}</td>
                     <td>
@@ -65,7 +63,6 @@
                 </tr>
             {% endfor %}
                 <tr>
-                    <td></td>
                     <td></td>
                     <td></td>
                     <td>Total €{{ total }}</td>
@@ -102,6 +99,7 @@
             </div>
     </table>
 </div>
+</div>
 
 <!-- Modal -->
 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -114,7 +112,7 @@
                         <div class="alert-message block-message error" id="stripe-error-message"></div>
                     </div>
         
-                    <img src="{% static "images/payments.png" %}" style="width: 100%">
+                    <img src="{% static "images/payments.png" %}" style="width: 100%"/>
                         {% csrf_token %}
                         {{ form | as_bootstrap }}
                     
