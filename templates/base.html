@@ -51,7 +51,7 @@
             </li>
         <div class="nav navbar-nav navbar-right">
                 {% if user.is_authenticated %}
-                    <li class="righticons"  data-balloon="You are logged in as {{ user.first_name }} {{ user.last_name }}" data-balloon-pos="down"><a href="{% url 'profile' %}"><i class="fa fa-user-circle-o" aria-hidden="true"></i> Profile</a></li>
+                    <li class="righticons"  data-balloon="You are logged in as {{ user.first_name }} {{ user.last_name }}" data-balloon-pos="down"><a href="{% url 'profile' %}"><span><img src="{% gravatar_url user.email %}" class="gravatarImage"></span></i> Profile</a></li>
                     <li class="righticons"><a href="{% url 'logout' %}"><i class="fa fa-sign-out"></i> Log Out</a></li>
                 {%  else %}
                     <button type="button" class="righticons" data-toggle="modal" data-target="#modalLogin"><i class="fa fa-plus" aria-hidden="true"></i> Login</button>

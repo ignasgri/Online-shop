@@ -16,7 +16,7 @@ class UserProfile(models.Model):
     postcode = models.CharField(max_length=7, blank=True)
     phone = models.CharField(max_length=10, blank=True)
     dob = models.CharField(max_length=10, blank=True)
-    gender = models.CharField(max_length=6, blank=True)
+    gender = models.CharField(max_length=1, blank=True)
 
 
 @receiver(post_save, sender=User)

@@ -23,7 +23,7 @@ def update_profile(request):
         request.user.profile.postcode=form.cleaned_data['postcode']
         request.user.profile.phone=form.cleaned_data['phone']
         request.user.profile.dob=form.cleaned_data['dob']
-        request.user.gender=form.cleaned_data['gender']
+        request.user.profile.gender=form.cleaned_data['gender']
         request.user.save()
         return redirect(reverse('profile'))
     else:
