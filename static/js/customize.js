@@ -32,8 +32,6 @@ $(document).ready(function() {
   $('.alert').fadeOut(4000); // 4 seconds x 1000 milisec = 4000 milisec
 });
 
-
-
 var slideIndex = 0;
 showSlides();
 

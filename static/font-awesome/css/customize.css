@@ -76,19 +76,12 @@ body{
 }
 
 .close-card {
-    /* float: right; */
     font-size: 21px;
     font-weight: 700;
     line-height: 1;
     color: white;
-    /* margin-top: 12px; */
     margin-right: 7px;
-    /* position: absolute; */
-    /* z-index: 1; */
-    /* left: 95%; */
     color: gray;
-    /* float: right; */
-    /* width: 400px; */
 }
 input.placeholder{
     color: white;
@@ -211,29 +204,16 @@ video{
     top: 60px;
     position: relative
 }
-/*.deliv{
-    z-index: 1;
-    top: -50px;
-    position: relative;
-
-}*/
 .profile-top{
        vertical-align: middle;
     color: white;
     text-align: center;
     font-family: 'Cousine';
-    /* height: 200px; */
-    /* text-align: right; */
     display: inline-block;
     margin: auto;
-    /* text-align: center; */
 }
 .userForm{
-        /* left: 30px; */
     font-size: 12px;
-    /* width: 100%; */
-    /* display: block; */
-    /* position: relative; */
     margin: auto;
 }
 .kidForm{
@@ -258,13 +238,11 @@ video{
     background-color: white!important;
 }
 .userForm input{
-    /*border: 1px solid gray;*/
     height: 30px;
     width: 300px;
     border: none;
 }
 .userForm select{
-    /*border: 1px solid gray;*/
     height: 30px;
     border: none;
     width: 80px;
@@ -325,9 +303,6 @@ i.fa-stack-1x {
     color:#820f0f;
     position: absolute;
 }
-/*.productInfo{
-    float: left;
-}*/
 .inlineButtons{
     display: inline-flex;
 }
@@ -374,58 +349,6 @@ a.post-meta{
     border: 1px solid #ddd;
     cursor: pointer;
 }
-/*.productimages{
-    border-radius: 25px;
-    border: 4px double #e5e5e5;
-    padding-bottom: 40px;
-}*/
-/*.cookies{
-    width:100%;
-    position: absolute;
-    left: -700px;
-    -webkit-animation: slide 0.5s forwards;
-    -webkit-animation-delay: 1s;
-    animation: slide 0.5s forwards;
-    animation-delay: 1s;
-}
-@-webkit-keyframes slide {
-    100% { left: 0; }
-}
-@keyframes slide {
-    100% { left: 0; }
-}
-
-.nutt{
-    width: 50%;
-    position: relative;
-    margin-top: 70%;
-    margin-left: 50%;
-    animation-name: fadeIn;
-     animation-timing-function: ease-in;
-     
-     animation-duration:2s;
-}
-@keyframes fadeIn {
-  0% {
-    opacity: 0;
-  }
-  50% {
-    opacity: 0;
-  }
-  75% {
-    opacity: 0;
-  }
-  100% {
-    opacity: 1;
-  }
-}*/
-/*.note{
-    height: 100%;
-    padding: auto;
-    padding-top: 40px;
-    padding-left: -50px;
-    
-}*/
 .productmenu{
     padding: 0px 0px 0px 20px;
 }
@@ -909,8 +832,6 @@ label{
   
   height: 800px;
 }
-
-
 .mySlides {display:none}
 
 /* Slideshow container */
