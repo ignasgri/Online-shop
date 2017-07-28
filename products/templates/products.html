@@ -112,7 +112,7 @@
                                     <form method="post" action="{% url 'add_to_cart' product.id %}">
                 {% csrf_token %}
                     
-                                        <input class="smallInput"name='quantity' type="number" min="1" max="99">
+                                        <input class="smallInput"name='quantity' value="1" type="number" min="1" max="99">
                                         <button i class="fa fa-shopping-basket" aria-hidden="true" type="submit"></i></button>
                                     </form>
                                 </td>

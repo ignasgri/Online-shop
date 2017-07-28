@@ -53,3 +53,17 @@ function showSlides() {
     dots[slideIndex-1].className += " active";
     setTimeout(showSlides, 3500); // Change image every 3.5 seconds
 }
+
+// Set values
+$("#theDate").val(getFormattedDate(today()));
+$("#theTomorrow").val(getFormattedDate(tomorrow()));
+$("#theAnyDate").val(getFormattedDate(new Date("4/1/12")));
+
+function today() {
+    return new Date();
+}
+
+function tomorrow() {
+    return today().getTime() + 24 * 60 * 60 * 1000;
+}
+

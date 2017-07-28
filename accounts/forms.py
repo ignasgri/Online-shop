@@ -26,7 +26,7 @@ class FullUserDetailsForm(forms.Form):
     postcode = forms.CharField(max_length=7, required=False)
     phone = forms.CharField(max_length=10, required=False)
     dob = forms.CharField(max_length=20, required=False)
-    gender = forms.CharField(max_length=1,required=False)
+    gender = forms.CharField(max_length=1, required=False)
     
     # finish this
 

@@ -15,8 +15,6 @@ def profile(request):
 def update_profile(request):
     form=FullUserDetailsForm(request.POST, request.FILES)
     if form.is_valid():
-        pass
-    else:
         request.user.first_name=form.cleaned_data['first_name']
         request.user.last_name=form.cleaned_data['last_name']
         request.user.email=form.cleaned_data['email']
@@ -24,10 +22,12 @@ def update_profile(request):
         request.user.profile.address2=form.cleaned_data['address2']
         request.user.profile.postcode=form.cleaned_data['postcode']
         request.user.profile.phone=form.cleaned_data['phone']
-        request.user.dob=form.cleaned_data['dob']
-        request.user.gender=form.cleaned_data['gender']
+        request.user.profile.dob=form.cleaned_data['dob']
+        request.user.profile.gender=form.cleaned_data['gender']
         request.user.save()
         return redirect(reverse('profile'))
+    else:
+        return HttpResponse("Error")
 
 def update_profile_kid(request, id):
     kid = get_object_or_404(KidProfile, pk=id)
