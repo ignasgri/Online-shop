@@ -25,7 +25,7 @@ class FullUserDetailsForm(forms.Form):
     address2 = forms.CharField(max_length=255, required=False)
     postcode = forms.CharField(max_length=7, required=False)
     phone = forms.CharField(max_length=10, required=False)
-    dob = forms.CharField(max_length=20, required=False)
+    dob = forms.CharField(max_length=10, required=False)
     gender = forms.CharField(max_length=1, required=False)
     
     # finish this
@@ -33,7 +33,7 @@ class FullUserDetailsForm(forms.Form):
 
 class KidDetailsForm(forms.Form):
     name = forms.CharField(max_length=None, required=False)
-    dob = forms.CharField(max_length=20, required=False)
+    dob = forms.CharField(max_length=10, required=False)
     gender = forms.CharField(max_length=1, required=False)
 
 

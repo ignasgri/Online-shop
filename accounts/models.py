@@ -15,7 +15,7 @@ class UserProfile(models.Model):
     address2 = models.CharField(max_length=255, blank=True)
     postcode = models.CharField(max_length=7, blank=True)
     phone = models.CharField(max_length=10, blank=True)
-    dob = models.CharField(max_length=20, null=True, blank=True)
+    dob = models.CharField(max_length=10, blank=True)
     gender = models.CharField(max_length=6, blank=True)
 
 
@@ -34,7 +34,7 @@ def save_user_profile(sender, instance, **kwargs):
 class KidProfile(models.Model):
     parent = models.ForeignKey(User, related_name='kids')
     name = models.CharField(max_length=255, null=True, blank=True)
-    dob = models.CharField(max_length=20, null=True, blank=True)
+    dob = models.CharField(max_length=10, null=True, blank=True)
     gender = models.CharField(max_length=1, null=True, blank=True)
 
     def __str__ (self):
