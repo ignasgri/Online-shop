@@ -1,5 +1,7 @@
 # Description
 Code Institute stream 3 project.
+Packing a lunch box day after day can be a bit of a bore so try lunchbox online shop to jazz things up a bit. From healthy lunch box treats, both sweet and savoury, to sandwich, wraps and salads. 
+This is only a project!
 View here: [lunchbox](https://ignas-onlineshop.herokuapp.com/)
 
 ### Tech Tool
@@ -25,13 +27,12 @@ https://www.w3schools.com
 https://www.codepen.io
 ---------------
 ### Tests ###
-![alt test](https://onlineshopbucket.s3.amazonaws.com/static/images/tests.JPG)
+<img src="https://github.com/ignasgri/Online-shop/blob/master/static/images/tests.JPG" width="400">
 ---------------
 ### Payments ###
 Stripe payments
-![alt stripepay](https://onlineshopbucket.s3.amazonaws.com/static/images/stripepay.JPG)
-<img src="https://onlineshopbucket.s3.amazonaws.com/static/images/stripe.png" width="100">
-<!--![alt stripegraph](https://onlineshopbucket.s3.amazonaws.com/static/images/stripe.png)-->
+<img src="https://github.com/ignasgri/Online-shop/blob/master/static/images/stripepay.JPG" width="250">
+<img src="https://onlineshopbucket.s3.amazonaws.com/static/images/stripe.png" width="150">
 ---------------
 ### Deployment ###
 * SQL was used while in development.
