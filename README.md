@@ -25,12 +25,12 @@ https://www.w3schools.com
 https://www.codepen.io
 ---------------
 ### Tests ###
-![alt test](https://onlineshopbucket.s3.amazonaws.com/static/images/tests.png)
+![alt test](https://onlineshopbucket.s3.amazonaws.com/static/images/tests.png = 200x170)
 ---------------
 ### Payments ###
 Stripe payments
-![alt stripepay](https://onlineshopbucket.s3.amazonaws.com/static/images/stripepay.png)
-![alt stripegraph](https://onlineshopbucket.s3.amazonaws.com/static/images/stripe.png)
+![alt stripepay](https://onlineshopbucket.s3.amazonaws.com/static/images/stripepay.png =100x130)
+![alt stripegraph](https://onlineshopbucket.s3.amazonaws.com/static/images/stripe.png =100x20)
 ---------------
 ### Deployment ###
 * SQL was used while in development.
