@@ -26,8 +26,8 @@ This is test of Ecommerce site using Python and Django framework.
 ><img src="https://github.com/ignasgri/Online-shop/blob/master/static/images/tests.JPG" width="400">
 
 ### Payments
+Stripe Payments is the simple and lightweight implementation of [Stripe.com](https://stripe.com/ie) payment service for Opencart.
 > <img src="https://github.com/ignasgri/Online-shop/blob/master/static/images/stripepay.JPG" width="250">
-> <img src="https://onlineshopbucket.s3.amazonaws.com/static/images/stripe.png" width="250">
 
 ### Deployment
 * SQL was used while in development.
@@ -35,7 +35,7 @@ This is test of Ecommerce site using Python and Django framework.
 * Postgres database system.
 * Heroku server
 ### Screenshot
-> <img src="https://onlineshopbucket.s3.amazonaws.com/static/images/screen.png" width="800">
+> <img src="https://onlineshopbucket.s3.amazonaws.com/static/images/screen.jpg" width="800">
 
 
 
