@@ -40,7 +40,7 @@ Stripe Payments is the simple and lightweight implementation of [Stripe.com](htt
 * Postgres database system.
 * Heroku server
 ### Screenshot
-> <img src="https://github.com/ignasgri/Online-shop/blob/master/static/images/screen.jpg" width="800">
+> <img src="https://github.com/ignasgri/Online-shop/blob/master/static/images/screen.jpg" width="850">
 
 
 
