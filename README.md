@@ -23,6 +23,11 @@ This is test of Ecommerce site using Python and Django framework.
 * [https://www.codepen.io](https://www.codepen.io)
 
 ### Tests
+Automated tests can be viewed in the tests.py file within the separate Apps. To run the tests, in your terminal navigate to the folder with your project in, activate your virtual environment and type:
+``` python manage.py test <app name>```
+
+* ``` python manage.py test accounts``` - These will all PASS tests.py n the Accounts App:
+* ``` python manage.py test home``` - These will all PASS tests.py n the Home App:
 ><img src="https://github.com/ignasgri/Online-shop/blob/master/static/images/tests.JPG" width="400">
 
 ### Payments
@@ -35,7 +40,7 @@ Stripe Payments is the simple and lightweight implementation of [Stripe.com](htt
 * Postgres database system.
 * Heroku server
 ### Screenshot
-> <img src="https://onlineshopbucket.s3.amazonaws.com/static/images/screen.jpg" width="800">
+> <img src="https://github.com/ignasgri/Online-shop/blob/master/static/images/screen.jpg" width="800">
 
 
 
