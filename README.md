@@ -42,5 +42,11 @@ Stripe Payments is the simple and lightweight implementation of [Stripe.com](htt
 ### Screenshot
 > <img src="https://github.com/ignasgri/Online-shop/blob/master/static/images/screen.jpg" width="850">
 
+### Wireframe Screenshots
+Mani page Mock-up
+> <img src="https://github.com/ignasgri/Online-shop/blob/master/static/images/main.png" width="850">
+Mobile product list Mock-up
+> <img src="https://github.com/ignasgri/Online-shop/blob/master/static/images/mobile.png">
+
 
 
